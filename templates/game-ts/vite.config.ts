@@ -4,10 +4,6 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
-    target: 'esnext',
-  },
-  server: {
-    port: 3000,
-    host: true,
+    emptyOutDir: true,
   },
 });

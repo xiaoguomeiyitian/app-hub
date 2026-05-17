@@ -1,6 +1,7 @@
 {
   "name": "@app-hub/design-system",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "main": "dist/design-system.js",
   "module": "dist/design-system.js",

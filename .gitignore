@@ -8,3 +8,5 @@ reports/
 *.log
 server.log
 *.backup
+package-lock.json
+*.bak_*

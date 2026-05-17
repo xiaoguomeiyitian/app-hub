@@ -1,13 +1,12 @@
 {
   "name": "todo-app",
   "version": "1.0.0",
-  "description": "待办事项应用",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest run",
-    "preview": "vite preview",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
   },

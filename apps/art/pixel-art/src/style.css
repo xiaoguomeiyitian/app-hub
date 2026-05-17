@@ -10,4 +10,4 @@ h1{font-size:1.3rem;margin-bottom:12px}
 .palette{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
 .palette .swatch{width:28px;height:28px;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:border-color .15s;background-color:var(--bg-tertiary)}
 .palette .swatch:hover,.palette .swatch.active{border-color:var(--text-primary)}
-canvas{cursor:crosshair;image-rendering:pixelated;box-shadow:0 4px 20px rgba(0,0,0,.3);touch-action:none
+canvas{cursor:crosshair;image-rendering:pixelated;box-shadow:0 4px 20px rgba(0,0,0,.3);touch-action:none}

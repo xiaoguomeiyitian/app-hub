@@ -45,16 +45,9 @@ export const NAV_BAR = `
 </div>
 <script>
 (function(){
-  // 动态计算应用大厅首页 URL
-  // 从当前路径提取基础前缀，如 /code/20008/xxx -> /code/20008/
-  var path = window.location.pathname;
-  // 匹配 /<prefix>/<port>/ 格式，取前两段
-  var match = path.match(/^(\\/[^\\/]+\\/[^\\/]+)\\/?/);
-  var baseUrl = match ? match[1] : '/openclaw/20008';
-  // 确保以 / 结尾
-  if (!baseUrl.endsWith('/')) baseUrl += '/';
+  // 应用大厅首页固定为根路径 /
   var link = document.getElementById('oc-nav-home-link');
-  if (link) link.href = baseUrl;
+  if (link) link.href = '/';
 })();
 </script>
 `;

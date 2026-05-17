@@ -1,7 +1,5 @@
 packages:
   - 'lobby-web'
   - 'hub-server'
-  - 'apps/*'
+  - 'apps/*/*'
   - 'packages/*'
-overrides:
-  app-hub: 'link:'
