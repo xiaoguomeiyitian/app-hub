@@ -1,0 +1,39 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, sans-serif; background: linear-gradient(135deg, #1a3a1a, #0d2e0d); color: #fff; min-height: 100vh; display: flex; justify-content: center; padding: 8px; user-select: none; }
+#app { width: 100%; max-width: 600px; }
+
+.pdz-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pdz-topbar { display: flex; justify-content: space-between; width: 100%; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 8px; align-items: center; }
+.pdz-table { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 12px; }
+.pdz-opp { padding: 8px; background: rgba(0,0,0,0.2); border-radius: 8px; width: 100%; text-align: center; font-size: 0.85rem; }
+.pdz-center { min-height: 60px; }
+.pdz-bottom { width: 100%; }
+.pdz-hand { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; padding: 8px; }
+.pdz-card { width: 44px; height: 62px; border-radius: 5px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  font-size: 0.65rem; font-weight: 700; border: 2px solid #333; background: linear-gradient(180deg,#fff,#f0f0f0); color: #333; cursor: pointer; transition: transform 0.15s; }
+.pdz-corner{position:absolute;display:flex;flex-direction:column;line-height:1;font-size:0.5rem;font-weight:800}
+.pdz-corner i{font-style:normal;font-size:.82em;line-height:1}
+.pdz-corner-tl{top:3px;left:3px;align-items:flex-start}
+.pdz-corner-br{right:3px;bottom:3px;align-items:flex-end;transform:rotate(180deg)}
+.pdz-mid{font-size:.62rem;opacity:.12;letter-spacing:.02em}
+.pdz-card:hover { transform: translateY(-4px); }
+.pdz-sel { transform: translateY(-14px) !important; border-color: #f5c542 !important; box-shadow: 0 4px 12px rgba(245,197,66,0.4); }
+.pdz-card-sm { display: inline-flex; position: relative; width: 30px; height: 42px; align-items: center; justify-content: center; background: #fff; color: #333; border-radius: 3px; font-size: 0.55rem; margin: 1px; font-weight: 700; overflow: hidden; }
+.pdz-card-sm .pdz-corner{font-size:0.42rem}
+.pdz-card-sm .pdz-mid{font-size:.46rem}
+.pdz-played { margin-top: 4px; }
+.pdz-controls { display: flex; gap: 8px; justify-content: center; padding: 8px; }
+.pdz-btn { padding: 8px 16px; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; background: #3a7d44; color: #fff; min-height: 40px; }
+.pdz-btn.primary { background: #f5c542; color: #1a1a2e; }
+.pdz-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.pdz-log { width: 100%; max-height: 60px; overflow-y: auto; padding: 4px 8px; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.7rem; color: #aaa; }
+
+@media (max-width: 480px) {
+  .pdz-card { width: 36px; height: 50px; font-size: 0.55rem; }
+  .pdz-corner{font-size:0.38rem}
+  .pdz-corner-tl{top:2px;left:2px}
+  .pdz-corner-br{right:2px;bottom:2px}
+  .pdz-mid{font-size:.5rem}
+}
+.back-to-lobby { position: fixed; top: 10px; left: 10px; z-index: 100; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.15); }
+.back-to-lobby:hover { background: rgba(255,255,255,0.15); }

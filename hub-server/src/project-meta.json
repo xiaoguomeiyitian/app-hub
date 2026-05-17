@@ -1,0 +1,595 @@
+{
+  "guestbook": {
+    "icon": "📖",
+    "label_zh": "留言板",
+    "label_en": "Guestbook",
+    "desc_zh": "留言板 - 访客签名和留言，Canvas 手写签名，WebSocket 实时同步",
+    "desc_en": "Guestbook with handwritten signatures and realtime sync",
+    "category": "social"
+  },
+  "gomoku": {
+    "icon": "⚫",
+    "label_zh": "五子棋",
+    "label_en": "Gomoku",
+    "desc_zh": "联机对战与重连，支持 AI 挑战",
+    "desc_en": "Online play with reconnect and AI challenge",
+    "description": "联机对战与重连，支持 AI 挑战",
+    "category": "game",
+    "hasRouter": true,
+    "hasSocket": true,
+    "supportsOnline": true,
+    "supportsBot": false,
+    "maxPlayers": 2
+  },
+  "blackjack": {
+    "icon": "🃏",
+    "label_zh": "21点",
+    "label_en": "Blackjack",
+    "category": "game",
+    "desc_zh": "经典21点纸牌游戏",
+    "desc_en": "Classic 21-point card game"
+  },
+  "guandan": {
+    "icon": "🀄",
+    "label_zh": "掼蛋",
+    "label_en": "Guandan",
+    "desc_zh": "支持单机体验与联机大厅入口",
+    "desc_en": "Single-player experience plus online lobby entry",
+    "description": "支持单机体验与联机大厅入口",
+    "category": "game",
+    "hasRouter": true,
+    "hasSocket": true,
+    "supportsOnline": true,
+    "supportsBot": true,
+    "maxPlayers": 4
+  },
+  "tetris": {
+    "icon": "🟦",
+    "label_zh": "俄罗斯方块",
+    "label_en": "Tetris",
+    "category": "game",
+    "desc_zh": "经典方块消除益智游戏",
+    "desc_en": "Classic block-puzzle game"
+  },
+  "xiangqi": {
+    "icon": "♟️",
+    "label_zh": "中国象棋",
+    "label_en": "Xiangqi",
+    "desc_zh": "联机对战与重连，支持 AI 挑战与排局",
+    "desc_en": "Online play with reconnect, AI and puzzles",
+    "description": "联机对战与重连，支持 AI 挑战与排局",
+    "category": "game",
+    "hasRouter": true,
+    "hasSocket": true,
+    "supportsOnline": true,
+    "supportsBot": false,
+    "maxPlayers": 2
+  },
+  "sudoku": {
+    "icon": "🔢",
+    "label_zh": "数独",
+    "label_en": "Sudoku",
+    "category": "game",
+    "desc_zh": "经典数字填充逻辑谜题",
+    "desc_en": "Classic number logic puzzle"
+  },
+  "minesweeper": {
+    "icon": "💣",
+    "label_zh": "扫雷",
+    "label_en": "Minesweeper",
+    "category": "game",
+    "desc_zh": "经典扫雷排雷游戏",
+    "desc_en": "Classic mine-sweeping game"
+  },
+  "snake-game": {
+    "label_zh": "贪吃蛇",
+    "desc_zh": "控制蛇吃食物不断成长",
+    "desc_en": "Control a growing snake eating food"
+  },
+  "flappy-bird": {
+    "icon": "🐤",
+    "label_zh": "跳跃小鸟",
+    "label_en": "Flappy Bird",
+    "desc_zh": "点击操控小鸟穿越障碍",
+    "desc_en": "Tap to guide the bird through obstacles",
+    "category": "game"
+  },
+  "game-2048": {
+    "label_zh": "2048 数字合并",
+    "desc_zh": "经典数字合并游戏",
+    "desc_en": "Classic number merge game"
+  },
+  "space-shooter": {
+    "label_zh": "太空射击",
+    "desc_zh": "驾驶飞船击杀外星入侵者",
+    "desc_en": "Shoot alien invaders in space"
+  },
+  "pinball": {
+    "icon": "🎱",
+    "label_zh": "弹球",
+    "label_en": "Pinball",
+    "category": "game",
+    "desc_zh": "经典弹球街机游戏",
+    "desc_en": "Classic arcade pinball"
+  },
+  "typing-rpg": {
+    "label_zh": "打字 RPG",
+    "desc_zh": "打字驱动的角色扮演冒险",
+    "desc_en": "Typing-driven RPG adventure"
+  },
+  "api-tester": {
+    "label_zh": "API 测试器",
+    "desc_zh": "接口调试与请求测试",
+    "desc_en": "API debugging and request testing"
+  },
+  "ascii-table": {
+    "label_zh": "ASCII 表格",
+    "desc_zh": "ASCII 字符表查看器",
+    "desc_en": "ASCII character table viewer"
+  },
+  "calculator": {
+    "label_zh": "计算器",
+    "desc_zh": "基础数学计算器",
+    "desc_en": "Basic calculator"
+  },
+  "calendar": {
+    "label_zh": "日历",
+    "desc_zh": "日期与日程查看",
+    "desc_en": "Date and schedule calendar"
+  },
+  "clipboard-manager": {
+    "label_zh": "剪贴板管理",
+    "desc_zh": "管理常用剪贴内容",
+    "desc_en": "Manage clipboard snippets"
+  },
+  "color-picker": {
+    "label_zh": "取色器",
+    "desc_zh": "颜色拾取与色值转换",
+    "desc_en": "Color picking and conversion"
+  },
+  "css-playground": {
+    "label_zh": "CSS 练习场",
+    "desc_zh": "CSS 样式实验与调试",
+    "desc_en": "CSS styling playground"
+  },
+  "cron-builder": {
+    "label_zh": "Cron 构建器",
+    "desc_zh": "生成与验证 Cron 表达式",
+    "desc_en": "Build and validate cron expressions"
+  },
+  "image-converter": {
+    "label_zh": "图片转换器",
+    "desc_zh": "图片格式与尺寸转换",
+    "desc_en": "Image format and size conversion"
+  },
+  "mock-server": {
+    "label_zh": "模拟服务器",
+    "desc_zh": "快速构建模拟接口",
+    "desc_en": "Create mock endpoints quickly"
+  },
+  "notepad": {
+    "label_zh": "记事本",
+    "desc_zh": "轻量文本记录",
+    "desc_en": "Lightweight notes"
+  },
+  "password-generator": {
+    "label_zh": "密码生成器",
+    "desc_zh": "生成安全密码",
+    "desc_en": "Generate secure passwords"
+  },
+  "pastebin": {
+    "label_zh": "代码粘贴板",
+    "desc_zh": "快速分享代码片段",
+    "desc_en": "Share code snippets quickly"
+  },
+  "url-shortener": {
+    "label_zh": "短链生成",
+    "desc_zh": "生成短链接",
+    "desc_en": "Generate short URLs"
+  },
+  "uuid-generator": {
+    "label_zh": "UUID 生成器",
+    "desc_zh": "生成随机 UUID",
+    "desc_en": "Generate UUIDs"
+  },
+  "bmi-calculator": {
+    "label_zh": "BMI 计算器",
+    "desc_zh": "身体质量指数计算器",
+    "desc_en": "Body Mass Index calculator"
+  },
+  "bookmark-manager": {
+    "label_zh": "书签管理器",
+    "desc_zh": "整理与管理常用书签",
+    "desc_en": "Organize and manage bookmarks"
+  },
+  "calorie-tracker": {
+    "label_zh": "卡路里追踪",
+    "desc_zh": "记录每日热量摄入",
+    "desc_en": "Track daily calorie intake"
+  },
+  "countdown": {
+    "icon": "⏳",
+    "label_zh": "倒计时",
+    "label_en": "Countdown",
+    "desc_zh": "重要时刻倒计时工具",
+    "desc_en": "Countdown timer for important events",
+    "category": "tool-efficiency"
+  },
+  "expense-split": {
+    "label_zh": "AA 分账",
+    "desc_zh": "多人消费分账工具",
+    "desc_en": "Split bills among people"
+  },
+  "expense-tracker": {
+    "label_zh": "记账本",
+    "desc_zh": "记录每日开销与预算",
+    "desc_en": "Track expenses and budget"
+  },
+  "habit-tracker": {
+    "label_zh": "习惯打卡",
+    "desc_zh": "每日习惯养成打卡",
+    "desc_en": "Track daily habits"
+  },
+  "kanban": {
+    "icon": "🗂️",
+    "label_zh": "看板任务",
+    "label_en": "Kanban Board",
+    "desc_zh": "可视化任务看板",
+    "desc_en": "Visual task board",
+    "category": "tool-efficiency"
+  },
+  "pomodoro": {
+    "icon": "🍅",
+    "label_zh": "番茄钟",
+    "label_en": "Pomodoro",
+    "desc_zh": "专注工作计时器",
+    "desc_en": "Focus work timer",
+    "category": "tool-efficiency"
+  },
+  "pomodoro-pro": {
+    "label_zh": "专业番茄钟",
+    "desc_zh": "增强版番茄专注计时",
+    "desc_en": "Enhanced pomodoro timer"
+  },
+  "reading-list": {
+    "label_zh": "阅读清单",
+    "desc_zh": "整理待读与已读内容",
+    "desc_en": "Organize reading list"
+  },
+  "shopping-list": {
+    "label_zh": "购物清单",
+    "desc_zh": "日常购物记录清单",
+    "desc_en": "Daily shopping checklist"
+  },
+  "sleep-tracker": {
+    "label_zh": "睡眠记录",
+    "desc_zh": "记录睡眠时长与质量",
+    "desc_en": "Track sleep duration and quality"
+  },
+  "todo-app": {
+    "label_zh": "待办事项",
+    "label_en": "Todo App",
+    "desc_zh": "轻量待办清单",
+    "desc_en": "Lightweight to-do list"
+  },
+  "typing-speed": {
+    "icon": "⌨️",
+    "label_zh": "打字测速",
+    "label_en": "Typing Speed",
+    "desc_zh": "测试键盘输入速度",
+    "desc_en": "Measure typing speed",
+    "category": "tool-efficiency"
+  },
+  "unit-converter": {
+    "label_zh": "单位换算",
+    "desc_zh": "长度重量温度等换算",
+    "desc_en": "Convert units like length weight and temperature"
+  },
+  "weather-widget": {
+    "label_zh": "天气小组件",
+    "desc_zh": "显示当前天气与预报",
+    "desc_en": "Show current weather and forecast"
+  },
+  "world-clocks": {
+    "label_zh": "全球时钟",
+    "desc_zh": "查看多时区时间",
+    "desc_en": "View multiple time zones"
+  },
+  "json-tool": {
+    "label_zh": "JSON 格式化",
+    "desc_zh": "JSON 查看、格式化与校验",
+    "desc_en": "View format and validate JSON"
+  },
+  "regex-tester": {
+    "label_zh": "正则测试器",
+    "desc_zh": "调试正则表达式",
+    "desc_en": "Debug regular expressions"
+  },
+  "md-editor": {
+    "label_zh": "Markdown 编辑器",
+    "desc_zh": "撰写和预览 Markdown",
+    "desc_en": "Write and preview Markdown"
+  },
+  "text-diff": {
+    "label_zh": "文本对比",
+    "desc_zh": "比较两段文本差异",
+    "desc_en": "Compare text differences"
+  },
+  "code-shot": {
+    "label_zh": "代码截图",
+    "desc_zh": "美化并生成代码截图",
+    "desc_en": "Beautify and generate code shots"
+  },
+  "flow-editor": {
+    "label_zh": "流程图编辑器",
+    "desc_zh": "绘制流程与关系图",
+    "desc_en": "Draw flows and diagrams"
+  },
+  "doodle": {
+    "icon": "✍️",
+    "label_zh": "简笔画",
+    "label_en": "Doodle",
+    "category": "art",
+    "desc_zh": "自由绘画与创意素描",
+    "desc_en": "Free drawing and creative sketching"
+  },
+  "pixel-art": {
+    "label_zh": "像素画板",
+    "desc_zh": "像素风格图画编辑器",
+    "desc_en": "Pixel art editor"
+  },
+  "cross-stitch": {
+    "label_zh": "十字绣转换",
+    "desc_zh": "图片转十字绣图案",
+    "desc_en": "Convert images to cross-stitch patterns"
+  },
+  "text-animator": {
+    "label_zh": "文字动画",
+    "desc_zh": "为文字添加动态效果",
+    "desc_en": "Add animations to text"
+  },
+  "live-wallpaper": {
+    "label_zh": "动态壁纸",
+    "desc_zh": "创建实时动态背景",
+    "desc_en": "Create live animated wallpapers"
+  },
+  "color-palette": {
+    "label_zh": "调色板",
+    "desc_zh": "生成和保存配色方案",
+    "desc_en": "Generate and save color palettes"
+  },
+  "gradient-generator": {
+    "label_zh": "渐变色生成",
+    "desc_zh": "创建平滑渐变色彩",
+    "desc_en": "Create smooth gradient colors"
+  },
+  "starfield": {
+    "icon": "🌌",
+    "label_zh": "星空巡礼",
+    "label_en": "Starfield",
+    "category": "visual",
+    "desc_zh": "遨游虚拟星空",
+    "desc_en": "Fly through a virtual starfield"
+  },
+  "kaleidoscope": {
+    "icon": "🔷",
+    "label_zh": "万花筒",
+    "label_en": "Kaleidoscope",
+    "category": "visual",
+    "desc_zh": "绚丽万花筒视觉效果",
+    "desc_en": "Mesmerizing kaleidoscope visuals"
+  },
+  "confetti": {
+    "icon": "🎊",
+    "label_zh": "庆祝彩带",
+    "label_en": "Confetti",
+    "category": "visual",
+    "desc_zh": "绽放庆祝彩纸动画",
+    "desc_en": "Burst confetti celebrations"
+  },
+  "voronoi-art": {
+    "label_zh": "沃罗诺伊",
+    "desc_zh": "沃罗诺伊几何艺术",
+    "desc_en": "Voronoi geometric art"
+  },
+  "fractal-explorer": {
+    "label_zh": "分形浏览器",
+    "desc_zh": "探索无限分形图案",
+    "desc_en": "Explore infinite fractal patterns"
+  },
+  "earth-view": {
+    "label_zh": "昼夜地球仪",
+    "desc_zh": "昼夜交替地球仪",
+    "desc_en": "Day-night rotating globe"
+  },
+  "game-of-life": {
+    "label_zh": "生命游戏",
+    "desc_zh": "康威生命游戏自动机",
+    "desc_en": "Conway Game of Life automaton"
+  },
+  "falling-sand": {
+    "label_zh": "沙粒模拟",
+    "desc_zh": "粒子沙粒物理模拟",
+    "desc_en": "Particle sand simulation"
+  },
+  "mouse-heatmap": {
+    "label_zh": "鼠标热力图",
+    "desc_zh": "鼠标移动热力图记录",
+    "desc_en": "Mouse movement heatmap"
+  },
+  "rain-rain": {
+    "label_zh": "点击雨幕",
+    "desc_zh": "点击交互雨幕效果",
+    "desc_en": "Interactive rain effect"
+  },
+  "particle-heart": {
+    "label_zh": "粒子爱心",
+    "desc_zh": "粒子爱心特效动画",
+    "desc_en": "Particle heart animation"
+  },
+  "noise-generator": {
+    "label_zh": "白噪音",
+    "desc_zh": "白噪音助眠生成器",
+    "desc_en": "White noise generator for sleep"
+  },
+  "virtual-piano": {
+    "label_zh": "虚拟钢琴",
+    "desc_zh": "在线弹奏虚拟钢琴",
+    "desc_en": "Play piano online"
+  },
+  "ambient-music": {
+    "label_zh": "氛围音乐",
+    "desc_zh": "环境氛围音乐生成",
+    "desc_en": "Ambient music generation"
+  },
+  "sound-sculpture": {
+    "label_zh": "声音雕塑",
+    "desc_zh": "可视化声音雕塑",
+    "desc_en": "Visual sound sculpting"
+  },
+  "quote-generator": {
+    "label_zh": "名言金句",
+    "desc_zh": "名言金句随机生成",
+    "desc_en": "Random quote generator"
+  },
+  "daily-sign": {
+    "label_zh": "每日一签",
+    "desc_zh": "每日签到打卡工具",
+    "desc_en": "Daily check-in tracker"
+  },
+  "decision-wheel": {
+    "label_zh": "决策转盘",
+    "desc_zh": "转盘帮你做决定",
+    "desc_en": "Spinning wheel for decisions"
+  },
+  "random-fate": {
+    "label_zh": "命运卡牌",
+    "desc_zh": "随机命运卡牌抽取",
+    "desc_en": "Draw random fate cards"
+  },
+  "ascii-art": {
+    "label_zh": "ASCII 艺术",
+    "desc_zh": "文字变 ASCII 艺术",
+    "desc_en": "Convert text to ASCII art"
+  },
+  "virtual-aquarium": {
+    "label_zh": "虚拟水族箱",
+    "desc_zh": "互动虚拟水族箱",
+    "desc_en": "Interactive virtual aquarium"
+  },
+  "stealth-express": {
+    "label_zh": "潜行快递",
+    "desc_zh": "潜行快递小游戏",
+    "desc_en": "Stealth delivery mini-game"
+  },
+  "stealth-mini": {
+    "label_zh": "潜行快递",
+    "desc_zh": "潜行快递小游戏",
+    "desc_en": "Stealth delivery mini-game"
+  },
+  "connect4": {
+    "label_zh": "四子棋",
+    "desc_zh": "经典四子连珠策略游戏",
+    "desc_en": "Four-in-a-row strategy game"
+  },
+  "darts": {
+    "label_zh": "飞镖",
+    "desc_zh": "经典飞镖投掷游戏",
+    "desc_en": "Classic dart-throwing game"
+  },
+  "mahjong": {
+    "label_zh": "麻将",
+    "desc_zh": "经典麻将游戏",
+    "desc_en": "Classic mahjong game"
+  },
+  "pacman": {
+    "label_zh": "吃豆人",
+    "desc_zh": "经典吃豆人迷宫游戏",
+    "desc_en": "Classic pacman maze game"
+  },
+  "paodekuai": {
+    "label_zh": "跑得快",
+    "desc_zh": "经典跑得快纸牌游戏",
+    "desc_en": "Classic quick-run card game"
+  },
+  "pong": {
+    "label_zh": "乒乓",
+    "desc_zh": "经典乒乓双人对战",
+    "desc_en": "Classic two-player pong"
+  },
+  "reversi": {
+    "label_zh": "黑白棋",
+    "desc_zh": "经典黑白棋翻转策略",
+    "desc_en": "Classic reversi strategy"
+  },
+  "spyfall": {
+    "label_zh": "卧底游戏",
+    "desc_zh": "社交推理卧底游戏",
+    "desc_en": "Social deduction spy game"
+  },
+  "werewolf": {
+    "label_zh": "狼人杀",
+    "desc_zh": "社交推理狼人杀游戏",
+    "desc_en": "Social deduction werewolf"
+  },
+  "wordle": {
+    "label_zh": "单词拼字",
+    "desc_zh": "经典猜单词游戏",
+    "desc_en": "Classic word guessing game"
+  },
+  "basketball": {
+    "label_zh": "篮球",
+    "desc_zh": "篮球投篮小游戏",
+    "desc_en": "Basketball shooting game"
+  },
+  "battleship": {
+    "label_zh": "战舰",
+    "desc_zh": "经典战舰策略游戏",
+    "desc_en": "Classic battleship strategy"
+  },
+  "bejeweled": {
+    "label_zh": "宝石迷阵",
+    "desc_zh": "经典宝石消除游戏",
+    "desc_en": "Classic gem-matching game"
+  },
+  "bomberman": {
+    "label_zh": "炸弹人",
+    "desc_zh": "经典炸弹人迷宫游戏",
+    "desc_en": "Classic bomberman maze game"
+  },
+  "checkers": {
+    "label_zh": "跳棋",
+    "desc_zh": "经典跳棋策略游戏",
+    "desc_en": "Classic checkers strategy"
+  },
+  "football": {
+    "label_zh": "足球",
+    "desc_zh": "足球射门小游戏",
+    "desc_en": "Football shooting game"
+  },
+  "go-game": {
+    "label_zh": "围棋",
+    "desc_zh": "经典围棋对弈",
+    "desc_en": "Classic go board game"
+  },
+  "qr-generator": {
+    "label_zh": "二维码生成器",
+    "desc_zh": "快速生成二维码",
+    "desc_en": "Generate QR codes"
+  },
+  "racing": {
+    "label_zh": "赛车",
+    "desc_zh": "极速赛车竞速游戏",
+    "desc_en": "Fast racing game"
+  },
+  "svg-editor": {
+    "label_zh": "SVG 编辑器",
+    "desc_zh": "矢量图形绘制工具",
+    "desc_en": "Vector graphics drawing tool"
+  },
+  "timestamp-tool": {
+    "label_zh": "时间戳工具",
+    "desc_zh": "时间戳格式与转换",
+    "desc_en": "Timestamp format and conversion"
+  }
+}

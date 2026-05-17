@@ -1,0 +1,31 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--radius:8px}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text)}
+.header{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.logo{font-size:1.2rem}.title{font-weight:600;font-size:.95rem}
+.main{padding:16px;max-width:600px;margin:0 auto}
+.summary{display:flex;gap:20px;align-items:center;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.cal-ring{position:relative;width:120px;height:120px;flex-shrink:0}
+.cal-ring svg{width:100%;height:100%}
+.cal-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.cal-num{font-size:1.3rem;font-weight:700;color:var(--accent)}
+.cal-label{font-size:.65rem;color:var(--muted)}
+.macros{display:flex;flex-direction:column;gap:8px;flex:1}
+.macro{display:flex;justify-content:space-between;font-size:.85rem}
+.macro-label{color:var(--muted)}.macro-val{font-weight:600;font-family:monospace}
+.search-row{margin-bottom:12px}
+.search{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);padding:10px;font-size:.85rem;outline:none}
+.search:focus{border-color:var(--accent)}
+.food-list{display:flex;flex-direction:column;gap:4px;margin-bottom:16px;max-height:300px;overflow-y:auto}
+.food-item{display:flex;align-items:center;gap:6px;padding:6px 8px;background:var(--surface);border:1px solid var(--border);border-radius:4px;font-size:.8rem}
+.food-name{flex:1}.food-cal{color:var(--accent);font-family:monospace;font-size:.75rem}
+.meal-select{background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:2px 4px;font-size:.7rem;outline:none}
+.add-food{background:var(--accent);color:#fff;border:none;border-radius:4px;width:28px;height:24px;cursor:pointer;font-size:.9rem}
+.today-log{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+.today-log h4{font-size:.85rem;margin-bottom:8px}
+.log-item{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem}
+.log-item span:first-child{flex:1}
+.log-meal{font-size:.65rem;color:var(--muted);background:rgba(255,255,255,.05);padding:1px 6px;border-radius:3px}
+.del-log{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem}
+.del-log:hover{color:#f85149}

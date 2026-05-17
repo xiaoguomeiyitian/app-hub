@@ -1,0 +1,8 @@
+/* Minimal styles for live-wallpaper */
+@import url('@app-hub/utils/theme/variables.css');
+body, html { margin: 0; padding: 0; overflow: hidden; background: var(--bg-primary); color: var(--text-primary); font-family: system-ui, sans-serif; }
+#app { position: absolute; top: 10px; left: 10px; z-index: 10; background: color-mix(in srgb, var(--bg-secondary), transparent 20%); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-secondary); backdrop-filter: blur(4px); }
+.lw-ui button { margin: 2px; padding: 4px 8px; border: none; border-radius: 4px; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; }
+.lw-ui button.active { background: var(--accent); color: var(--bg-primary); }
+.lw-ui label { display: block; margin: 4px 0; font-size: 0.9rem; color: var(--text-secondary); }
+.lw-ui input[type=range] { vertical-align: middle; accent-color: var(--accent); }

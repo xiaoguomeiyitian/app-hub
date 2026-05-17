@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>动态壁纸生成器</title><style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden;font-family:sans-serif;background:#000}canvas{display:block}#ui{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}.btn{background:rgba(255,255,255,.1);color:#e6edf3;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.8rem;backdrop-filter:blur(4px);transition:all .15s}.btn:hover{background:rgba(255,255,255,.25)}.btn.active{background:rgba(88,166,255,.3);border-color:#58a6ff}h1{color:#e6edf3;font-size:1rem;text-shadow:0 2px 8px rgba(0,0,0,.8);margin-right:8px}.params{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:16px;align-items:center;background:rgba(0,0,0,.5);padding:8px 16px;border-radius:8px;backdrop-filter:blur(4px)}.params label{color:rgba(255,255,255,.5);font-size:.7rem;display:flex;align-items:center;gap:4px}.params input[type=range]{width:60px;accent-color:#58a6ff}</style></head><body>
+<div id="ui">
+  <h1>🎨 动态壁纸</h1>
+  <button class="btn active" data-t="stars">✨ 星空</button>
+  <button class="btn" data-t="aurora">🌌 极光</button>
+  <button class="btn" data-t="sakura">🌸 樱花</button>
+  <button class="btn" data-t="bubbles">🫧 气泡</button>
+  <button class="btn" data-t="matrix">💚 矩阵</button>
+  <button class="btn" data-t="fireflies">🪲 萤火虫</button>
+  <button class="btn" data-t="snow">❄️ 飘雪</button>
+</div>
+<div class="params">
+  <label>密度 <input type="range" id="density" min="20" max="500" value="150"/></label>
+  <label>速度 <input type="range" id="speed" min="1" max="20" value="8"/></label>
+  <label>大小 <input type="range" id="size" min="1" max="10" value="3"/></label>
+</div>
+<canvas id="c"></canvas>
+<script type="module" src="./src/main.ts"></script>
+</body></html>

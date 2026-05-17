@@ -1,0 +1,550 @@
+/* ===== 全局样式 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+/* ===== 入口大厅 (掼蛋式) ===== */
+.entry-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #fff;
+}
+.entry-logo { text-align: center; margin-bottom: 2rem; }
+.entry-logo .logo-icon { font-size: 4rem; display: block; margin-bottom: 0.5rem; }
+.entry-logo h1 { font-size: 2rem; margin: 0.5rem 0 0; }
+.entry-tagline { color: #a0b4c8; margin: 0.5rem 0 0; }
+.entry-actions { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 360px; }
+.entry-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+.entry-btn:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+.entry-btn.primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: #16a34a;
+  font-weight: 600;
+}
+.entry-btn .btn-icon { font-size: 1.75rem; }
+.entry-btn .btn-text-wrap { display: flex; flex-direction: column; align-items: flex-start; }
+.entry-btn .btn-text { font-size: 1rem; font-weight: 600; }
+.entry-btn .btn-desc { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
+.entry-btn.primary .btn-desc { color: rgba(255,255,255,0.8); }
+.entry-sub-row { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+.entry-sub-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: #c0d0e0;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.entry-sub-select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  cursor: pointer;
+  min-height: 36px;
+}
+.entry-footer { margin-top: 2rem; font-size: 0.7rem; color: #607080; }
+.entry-bg.hidden { display: none; }
+
+/* ===== 游戏画面 ===== */
+.gomoku-shell { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px; gap: 8px; }
+.gomoku-shell.hidden { display: none; }
+.gomoku-shell-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 0;
+}
+.gomoku-back-entry-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gomoku-back-entry-btn:hover { background: rgba(255,255,255,0.15); }
+.gomoku-shell-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0c040;
+}
+.gomoku-shell-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== 主容器 ===== */
+.gomoku-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  gap: 10px;
+}
+
+.gomoku-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f0c040;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* ===== 控制栏 ===== */
+.gomoku-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.gomoku-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2d2d44;
+  color: #eee;
+  transition: background 0.2s, transform 0.1s;
+  min-width: 70px;
+  min-height: 44px;
+}
+
+.gomoku-btn:hover:not(:disabled) {
+  background: #3d3d5c;
+}
+
+.gomoku-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.gomoku-btn.primary {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.gomoku-btn.primary:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+.gomoku-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gomoku-select {
+  padding: 8px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #2d2d44;
+  color: #eee;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* ===== 状态文本 ===== */
+.gomoku-status {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  min-height: 1.5em;
+  color: #f0c040;
+}
+
+/* ===== 棋盘容器 ===== */
+.gomoku-canvas-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#gomoku-canvas {
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  touch-action: none;
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 480px) {
+  .gomoku-title {
+    font-size: 1.2rem;
+  }
+
+  .gomoku-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    min-height: 44px;
+  }
+
+  .gomoku-status {
+    font-size: 1rem;
+  }
+}
+
+/* ===== 小统计条 ===== */
+.gomoku-mini-stats {
+  font-size: 0.8rem;
+  color: #aaa;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.gomoku-mini-stats .stat-win { color: #2ecc71; }
+.gomoku-mini-stats .stat-lose { color: #e74c3c; }
+.gomoku-mini-stats .stat-draw { color: #f39c12; }
+.gomoku-mini-stats .stat-total { color: #888; }
+
+/* ===== 联机大厅 ===== */
+.online-lobby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.online-lobby.hidden {
+  display: none;
+}
+
+.online-lobby h2 {
+  font-size: 1.4rem;
+  color: #f0c040;
+  margin-bottom: 4px;
+}
+
+.online-conn-status {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.online-lobby-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.online-lobby-buttons .gomoku-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.online-join-room {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.online-join-room input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #2d2d44;
+  color: #eee;
+  text-align: center;
+  letter-spacing: 4px;
+  min-height: 44px;
+}
+
+.online-join-room input::placeholder {
+  letter-spacing: 0;
+  color: #666;
+}
+
+.online-join-room .gomoku-btn {
+  min-width: 80px;
+}
+
+/* 匹配中 */
+.online-matching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.online-matching.hidden {
+  display: none;
+}
+
+.online-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #333;
+  border-top-color: #f0c040;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 房间面板 */
+.online-room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  width: 100%;
+}
+
+.online-room.hidden {
+  display: none;
+}
+
+.online-room strong {
+  color: #f0c040;
+  font-size: 1.3rem;
+  letter-spacing: 4px;
+}
+
+.gomoku-btn.small {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  min-height: 32px;
+  min-width: auto;
+}
+
+.online-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.online-player {
+  padding: 8px 12px;
+  background: #2d2d44;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* 状态提示 */
+.online-status-msg {
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: center;
+  min-height: 1.2em;
+}
+.back-to-lobby { position: fixed; top: 10px; left: 10px; z-index: 100; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.15); }
+.back-to-lobby:hover { background: rgba(255,255,255,0.15); }
+
+/* ===== 新版入口大厅样式 ===== */
+
+/* 模式选择网格 */
+.entry-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+
+/* 模式选择卡片 */
+.entry-mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  min-height: 120px;
+}
+.entry-mode-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+.entry-mode-card:active {
+  transform: translateY(-1px);
+}
+
+/* 单机模式 - 绿色 */
+.entry-mode-card.primary {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(22, 163, 74, 0.15));
+  border-color: rgba(34, 197, 94, 0.4);
+}
+.entry-mode-card.primary:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(22, 163, 74, 0.25));
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.2);
+}
+
+/* 联机模式 - 蓝色 */
+.entry-mode-card.online {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.15));
+  border-color: rgba(59, 130, 246, 0.4);
+}
+.entry-mode-card.online:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(37, 99, 235, 0.25));
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.2);
+}
+
+.mode-icon {
+  font-size: 2.5rem;
+  margin-bottom: 4px;
+}
+.mode-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.mode-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.4;
+}
+
+/* 难度选择 */
+.diff-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+}
+
+/* 统计信息 */
+.gomoku-mini-stats {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+.stat-win { color: #22c55e; }
+.stat-lose { color: #ef4444; }
+.stat-draw { color: #f59e0b; }
+.stat-total { color: rgba(255,255,255,0.4); margin-left: 4px; }
+
+/* 底部信息 */
+.entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+}
+.footer-tip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 返回按钮 */
+.gomoku-back-entry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gomoku-back-entry-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
+}
+.back-icon {
+  font-size: 1.1em;
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+  .entry-mode-grid {
+    gap: 12px;
+  }
+  .entry-mode-card {
+    padding: 20px 12px;
+    min-height: 100px;
+    border-radius: 14px;
+  }
+  .mode-icon {
+    font-size: 2rem;
+  }
+  .mode-title {
+    font-size: 1rem;
+  }
+  .mode-desc {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@app-hub/design-system",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/design-system.js",
+  "module": "dist/design-system.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0"
+  }
+}

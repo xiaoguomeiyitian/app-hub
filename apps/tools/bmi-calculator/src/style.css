@@ -1,0 +1,29 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--radius:8px}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text)}
+.header{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.logo{font-size:1.2rem}.title{font-weight:600;font-size:.95rem}
+.main{padding:16px;max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.unit-toggle{display:flex;gap:6px}
+.unit-btn{flex:1;padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--muted);cursor:pointer;font-size:.8rem}
+.unit-btn:hover{border-color:var(--accent)}.unit-btn.active{border-color:var(--accent);color:var(--accent)}
+.inputs{display:flex;flex-direction:column;gap:12px}
+.input-group{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+.input-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.slider{width:100%;height:6px;-webkit-appearance:none;appearance:none;background:var(--border);border-radius:3px;outline:none;cursor:pointer;margin-bottom:8px}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent)}
+.num-input{width:80px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:6px 8px;font-size:1rem;outline:none;text-align:center}
+.num-input:focus{border-color:var(--accent)}
+.result{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.bmi-value{font-size:3rem;font-weight:300;margin-bottom:4px}
+.bmi-category{font-size:1.2rem;font-weight:600;margin-bottom:8px}
+.bmi-range{font-size:.8rem;color:var(--muted)}
+.gauge{position:relative;height:12px;background:var(--border);border-radius:6px;overflow:hidden}
+.gauge-fill{height:100%;border-radius:6px;transition:width .3s}
+.gauge-labels{display:flex;justify-content:space-between;font-size:.6rem;color:var(--muted);margin-top:4px}
+.btn-save{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:10px;font-size:.9rem;font-weight:600;cursor:pointer}
+.btn-save:hover{opacity:.9}
+.history{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+.history h4{font-size:.85rem;margin-bottom:8px}
+.hist-item{display:flex;justify-content:space-between;font-size:.8rem;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03)}

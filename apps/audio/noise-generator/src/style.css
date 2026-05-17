@@ -1,0 +1,14 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh;padding:24px;display:flex;flex-direction:column;align-items:center}
+h1{font-size:1.5rem;margin-bottom:20px}
+.mixer{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;max-width:800px;width:100%}
+.channel{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;transition:border-color .2s}
+.channel.active{border-color:#58a6ff}
+.channel-icon{font-size:2rem}
+.channel-name{font-size:.85rem;color:#8b949e}
+.volume{width:100%;accent-color:#58a6ff;writing-mode:vertical-lr;height:100px;direction:ltr}
+.volume-h{width:100%;accent-color:#58a6ff}
+.toggle{background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.8rem;width:100%}
+.toggle.on{background:#238636;border-color:#238636;color:#fff}
+.master{margin-top:24px;max-width:800px;width:100%;display:flex;align-items:center;gap:12px;justify-content:center}
+.master label{font-size:.85rem;color:#8b949e}

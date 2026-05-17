@@ -1,0 +1,31 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,sans-serif;background:#000;color:#fff;min-height:100vh;display:flex;justify-content:center;padding:8px;user-select:none;}
+#app{width:100%;max-width:500px;}
+
+.pc-wrapper{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.pc-header{display:flex;justify-content:space-between;align-items:center;width:100%;padding:6px 10px;background:#111;border-radius:8px;flex-wrap:wrap;gap:6px;}
+.pc-title{font-size:1.2rem;font-weight:700;color:#ff0;}
+.pc-info{display:flex;gap:12px;font-size:0.85rem;}
+.pc-header-btns{display:flex;gap:6px;}
+.pc-hiscore{font-size:0.75rem;color:#888;}
+.pc-canvas-wrap{position:relative;display:flex;justify-content:center;}
+#pc-canvas{display:block;border-radius:4px;touch-action:none;}
+.pc-btn{padding:6px 12px;border:none;border-radius:6px;background:#333;color:#fff;cursor:pointer;font-size:0.8rem;font-weight:600;}
+.pc-btn:hover{background:#555;}
+.pc-btn.primary{background:#ff0;color:#000;}
+.pc-hints{font-size:0.7rem;color:#666;}
+
+/* 覆盖层 */
+.pc-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;border-radius:4px;z-index:10;}
+.pc-overlay-card{text-align:center;padding:20px;}
+.pc-overlay-card h2{font-size:1.5rem;margin-bottom:12px;}
+.pc-overlay-card p{margin-bottom:8px;font-size:1rem;}
+
+/* 触控 */
+.pc-touch{display:none;flex-direction:column;align-items:center;gap:4px;margin-top:8px;}
+@media(pointer:coarse),(max-width:500px){.pc-touch{display:flex;}.pc-hints{display:none;}}
+.touch-row{display:flex;gap:4px;}
+.touch-btn{width:56px;height:48px;border:1px solid #444;border-radius:8px;background:#222;color:#ccc;font-size:1.2rem;font-weight:700;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;}
+.touch-btn:active{background:#444;}
+.back-to-lobby { position: fixed; top: 10px; left: 10px; z-index: 100; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.15); }
+.back-to-lobby:hover { background: rgba(255,255,255,0.15); }

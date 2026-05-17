@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>斗地主</title>
+  <link rel="stylesheet" href="./app-lobby/styles.css?v=202604041108">
+</head>
+<body>
+  <header class="top-bar" id="topBar">
+    <div class="top-bar-inner">
+      <a href="/openclaw/20008/" class="logo-link" aria-label="返回应用大厅首页">
+        <span class="logo-icon">🎮</span>
+        <span class="logo-text">应用大厅</span>
+      </a>
+      <div class="top-actions">
+        <button class="top-chip" id="recentBtn" onclick="Lobby.showRecent()">最近</button>
+        <button class="top-chip" id="favBtn" onclick="Lobby.showFavorites()">收藏</button>
+        <button class="top-chip" id="themeBtn" onclick="Lobby.toggleTheme()" title="切换主题">🌙</button>
+        <button class="top-chip" id="langBtn" onclick="Lobby.toggleLang()" title="切换语言">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="search-row" aria-label="搜索">
+      <div class="search-area">
+        <input id="searchInput" class="search-input" placeholder="🔍 搜索应用..." autocomplete="off" oninput="Lobby.handleSearch(this.value)" onfocus="Lobby.openSearchDropdown()">
+        <div id="searchDropdown" class="search-dropdown" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="category-row" aria-label="分类栏">
+      <div id="filterBar" class="filter-bar"></div>
+    </section>
+
+    <section class="content-section">
+      <div id="emptyState" class="empty-state" style="display:none">
+        <div class="empty-icon">🔍</div>
+        <p>没有找到匹配的应用</p>
+        <button class="btn-primary" onclick="Lobby.resetFilters()">显示全部</button>
+      </div>
+      <div id="projectsGrid" class="projects-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>应用大厅 · 轻量高效入口</p>
+    </div>
+  </footer>
+
+  <script src="./app-lobby/lobby.js?v=202604041108"></script>
+</body>
+</html>

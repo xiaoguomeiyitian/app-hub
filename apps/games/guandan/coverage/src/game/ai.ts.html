@@ -1,0 +1,1099 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/game/ai.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/game</a> ai.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/265</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/248</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/49</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/193</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a>
+<a name='L339'></a><a href='#L339'>339</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { Card, Combo, GameState, SeatId } from './types'
+import { canBeat, getAllCombos, seatTeam, seatOrder } from './engine'
+&nbsp;
+type StrategyMode = 'lead' | 'response'
+&nbsp;
+type CardPressureMap = Map&lt;string, number&gt;
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >chooseLeadCombo(h</span>and: Card[], state?: GameState, seat?: SeatId): Combo {
+  // Bug #1: 首出强制含 ♠3
+<span class="cstat-no" title="statement not covered" >  if (state &amp;&amp; !state.openingLeadCompleted &amp;&amp; seat === state.openingStarter) {</span>
+    const <span class="cstat-no" title="statement not covered" >allCombosFirst = getAllCombos(hand, state?.levelRank)</span>
+    const filtered = <span class="cstat-no" title="statement not covered" >allCombosFirst.<span class="fstat-no" title="function not covered" >filter(c</span> =&gt; <span class="cstat-no" title="statement not covered" >c.cards.<span class="fstat-no" title="function not covered" >some(c</span>ard =&gt; <span class="cstat-no" title="statement not covered" >card.rank === '3' &amp;&amp; card.suit === 'spade'))</span></span></span>
+<span class="cstat-no" title="statement not covered" >    if (filtered.length &gt; 0) {</span>
+      const scored = <span class="cstat-no" title="statement not covered" >sortCombos(hand, filtered, null, 'lead', state, seat)</span>
+<span class="cstat-no" title="statement not covered" >      return scored[0] ?? filtered[0]</span>
+    }
+  }
+&nbsp;
+  // 一手出完优先
+  const <span class="cstat-no" title="statement not covered" >allCombos = getAllCombos(hand, state?.levelRank)</span>
+<span class="cstat-no" title="statement not covered" >  for (const combo of allCombos) {</span>
+<span class="cstat-no" title="statement not covered" >    if (combo.cards.length === hand.length) <span class="cstat-no" title="statement not covered" >return combo</span></span>
+  }
+  const scored = <span class="cstat-no" title="statement not covered" >sortCombos(hand, allCombos, null, 'lead', state, seat)</span>
+<span class="cstat-no" title="statement not covered" >  return scored[0] ?? fallbackCombo(hand)</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >chooseResponseCombo(h</span>and: Card[], current: Combo | null, state?: GameState, seat?: SeatId): Combo | null {
+<span class="cstat-no" title="statement not covered" >  if (!current) <span class="cstat-no" title="statement not covered" >return chooseLeadCombo(hand, state, seat)</span></span>
+  const <span class="cstat-no" title="statement not covered" >legal = getAllCombos(hand, state?.levelRank).<span class="fstat-no" title="function not covered" >filter((<span class="cstat-no" title="statement not covered" >c</span>ombo) =&gt; canBeat(combo, current))</span></span>
+<span class="cstat-no" title="statement not covered" >  if (legal.length === 0) <span class="cstat-no" title="statement not covered" >return null</span></span>
+&nbsp;
+  // 一手出完优先
+<span class="cstat-no" title="statement not covered" >  for (const combo of legal) {</span>
+<span class="cstat-no" title="statement not covered" >    if (combo.cards.length === hand.length) <span class="cstat-no" title="statement not covered" >return combo</span></span>
+  }
+&nbsp;
+  const sameType = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter((c</span>ombo) =&gt; <span class="cstat-no" title="statement not covered" >combo.type === current.type &amp;&amp; combo.length === current.length)</span></span>
+<span class="cstat-no" title="statement not covered" >  if (sameType.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    return sortCombos(hand, sameType, current, 'response', state, seat)[0] ?? null</span>
+  }
+&nbsp;
+  const bombs = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter((c</span>ombo) =&gt; <span class="cstat-no" title="statement not covered" >combo.type === 'bomb')</span></span>
+<span class="cstat-no" title="statement not covered" >  if (bombs.length &gt; 0) {</span>
+    const scored = <span class="cstat-no" title="statement not covered" >sortCombos(hand, bombs, current, 'response', state, seat)</span>
+    // 团队意识：队友快赢时不轻易炸
+<span class="cstat-no" title="statement not covered" >    if (state &amp;&amp; seat &amp;&amp; !shouldBomb(state, seat)) <span class="cstat-no" title="statement not covered" >return null</span></span>
+<span class="cstat-no" title="statement not covered" >    return scored[0] ?? null</span>
+  }
+&nbsp;
+  const rocket = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter((c</span>ombo) =&gt; <span class="cstat-no" title="statement not covered" >combo.type === 'rocket')</span></span>
+<span class="cstat-no" title="statement not covered" >  if (rocket.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    if (state &amp;&amp; seat &amp;&amp; !shouldBomb(state, seat)) <span class="cstat-no" title="statement not covered" >return null</span></span>
+<span class="cstat-no" title="statement not covered" >    return sortCombos(hand, rocket, current, 'response', state, seat)[0] ?? null</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return null</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >chooseHintCombo(h</span>and: Card[], current: Combo | null, state?: GameState): Combo | null {
+  const legal = <span class="cstat-no" title="statement not covered" >current ? getAllCombos(hand, state?.levelRank).<span class="fstat-no" title="function not covered" >filter((<span class="cstat-no" title="statement not covered" >c</span>ombo) =&gt; canBeat(combo, current))</span> : getAllCombos(hand, state?.levelRank)</span>
+<span class="cstat-no" title="statement not covered" >  if (legal.length === 0) <span class="cstat-no" title="statement not covered" >return null</span></span>
+&nbsp;
+  // 首出过滤：必须包含 ♠3
+<span class="cstat-no" title="statement not covered" >  if (state &amp;&amp; !state.openingLeadCompleted &amp;&amp; state.turn === state.openingStarter) {</span>
+    const filtered = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter(c</span>ombo =&gt; <span class="cstat-no" title="statement not covered" >combo.cards.<span class="fstat-no" title="function not covered" >some(c</span> =&gt; <span class="cstat-no" title="statement not covered" >c.rank === '3' &amp;&amp; c.suit === 'spade'))</span></span></span>
+<span class="cstat-no" title="statement not covered" >    if (filtered.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return sortCombos(hand, filtered, current, current ? 'response' : 'lead')[0] ?? null</span>
+    }
+    // 如果没有包含 ♠3 的牌型，尝试找包含 ♠3 的最小牌型
+    const spade3 = <span class="cstat-no" title="statement not covered" >hand.<span class="fstat-no" title="function not covered" >find(c</span> =&gt; <span class="cstat-no" title="statement not covered" >c.rank === '3' &amp;&amp; c.suit === 'spade')</span></span>
+<span class="cstat-no" title="statement not covered" >    if (spade3) {</span>
+      const withSpade3 = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter(c</span>ombo =&gt; <span class="cstat-no" title="statement not covered" >combo.cards.<span class="fstat-no" title="function not covered" >some(c</span> =&gt; <span class="cstat-no" title="statement not covered" >c.id === spade3.id))</span></span></span>
+<span class="cstat-no" title="statement not covered" >      if (withSpade3.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        return sortCombos(hand, withSpade3, current, current ? 'response' : 'lead')[0] ?? null</span>
+      }
+    }
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return sortCombos(hand, legal, current, current ? 'response' : 'lead')[0] ?? null</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >chooseRecommendedCombo(h</span>and: Card[], current: Combo | null, state?: GameState): Combo | null {
+  const legal = <span class="cstat-no" title="statement not covered" >current ? getAllCombos(hand, state?.levelRank).<span class="fstat-no" title="function not covered" >filter((<span class="cstat-no" title="statement not covered" >c</span>ombo) =&gt; canBeat(combo, current))</span> : getAllCombos(hand, state?.levelRank)</span>
+<span class="cstat-no" title="statement not covered" >  if (legal.length === 0) <span class="cstat-no" title="statement not covered" >return null</span></span>
+&nbsp;
+  // 首出过滤：必须包含 ♠3
+<span class="cstat-no" title="statement not covered" >  if (state &amp;&amp; !state.openingLeadCompleted &amp;&amp; state.turn === state.openingStarter) {</span>
+    const filtered = <span class="cstat-no" title="statement not covered" >legal.<span class="fstat-no" title="function not covered" >filter(c</span>ombo =&gt; <span class="cstat-no" title="statement not covered" >combo.cards.<span class="fstat-no" title="function not covered" >some(c</span> =&gt; <span class="cstat-no" title="statement not covered" >c.rank === '3' &amp;&amp; c.suit === 'spade'))</span></span></span>
+<span class="cstat-no" title="statement not covered" >    if (filtered.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return sortCombos(hand, filtered, current, current ? 'response' : 'lead')[0] ?? null</span>
+    }
+  }
+&nbsp;
+  // 一手出完优先
+<span class="cstat-no" title="statement not covered" >  for (const combo of legal) {</span>
+<span class="cstat-no" title="statement not covered" >    if (combo.cards.length === hand.length) <span class="cstat-no" title="statement not covered" >return combo</span></span>
+  }
+<span class="cstat-no" title="statement not covered" >  return sortCombos(hand, legal, current, current ? 'response' : 'lead')[0] ?? null</span>
+}
+&nbsp;
+// ===== 团队意识 =====
+&nbsp;
+function <span class="fstat-no" title="function not covered" >shouldBomb(s</span>tate: GameState, seat: SeatId): boolean {
+  const myTeam = <span class="cstat-no" title="statement not covered" >seatTeam[seat]</span>
+  const partner = <span class="cstat-no" title="statement not covered" >seatOrder.<span class="fstat-no" title="function not covered" >find(s</span> =&gt; <span class="cstat-no" title="statement not covered" >s !== seat &amp;&amp; seatTeam[s] === myTeam)!</span></span>
+  const partnerHand = <span class="cstat-no" title="statement not covered" >state.players[partner].hand.length</span>
+  const myHand = <span class="cstat-no" title="statement not covered" >state.players[seat].hand.length</span>
+&nbsp;
+  // 队友快赢了 → 不炸
+<span class="cstat-no" title="statement not covered" >  if (partnerHand &lt;= 3) <span class="cstat-no" title="statement not covered" >return false</span></span>
+  // 自己快赢了 → 炸
+<span class="cstat-no" title="statement not covered" >  if (myHand &lt;= 5) <span class="cstat-no" title="statement not covered" >return true</span></span>
+  // 对手快赢了 → 炸
+  const lastPlayer = <span class="cstat-no" title="statement not covered" >state.trick.leaderSeat</span>
+<span class="cstat-no" title="statement not covered" >  if (lastPlayer &amp;&amp; seatTeam[lastPlayer] !== myTeam) {</span>
+<span class="cstat-no" title="statement not covered" >    if (state.players[lastPlayer].hand.length &lt;= 4) <span class="cstat-no" title="statement not covered" >return true</span></span>
+  }
+<span class="cstat-no" title="statement not covered" >  return true</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >teamAwarenessScore(s</span>tate: GameState, seat: SeatId, combo: Combo, current: Combo | null): number {
+  const myTeam = <span class="cstat-no" title="statement not covered" >seatTeam[seat]</span>
+  const partner = <span class="cstat-no" title="statement not covered" >seatOrder.<span class="fstat-no" title="function not covered" >find(s</span> =&gt; <span class="cstat-no" title="statement not covered" >s !== seat &amp;&amp; seatTeam[s] === myTeam)!</span></span>
+  const partnerHand = <span class="cstat-no" title="statement not covered" >state.players[partner].hand.length</span>
+  const myHand = <span class="cstat-no" title="statement not covered" >state.players[seat].hand.length</span>
+  let score = <span class="cstat-no" title="statement not covered" >0</span>
+&nbsp;
+  // 队友是上轮出牌方 → 不压队友（除非一手出完）
+<span class="cstat-no" title="statement not covered" >  if (state.trick.leaderSeat === partner &amp;&amp; combo.cards.length &lt; myHand) {</span>
+<span class="cstat-no" title="statement not covered" >    score += 500 // 强烈不压队友</span>
+  }
+&nbsp;
+  // 队友快赢了 → 保守
+<span class="cstat-no" title="statement not covered" >  if (partnerHand &lt;= 3) {</span>
+<span class="cstat-no" title="statement not covered" >    if (combo.type === 'bomb' || combo.type === 'rocket') <span class="cstat-no" title="statement not covered" >score += 800</span></span>
+  }
+&nbsp;
+  // 自己快赢了 → 激进
+<span class="cstat-no" title="statement not covered" >  if (myHand &lt;= 5) {</span>
+<span class="cstat-no" title="statement not covered" >    score -= 300</span>
+  }
+&nbsp;
+  // 对手快赢了 → 必须压
+<span class="cstat-no" title="statement not covered" >  if (current) {</span>
+    const lastPlayer = <span class="cstat-no" title="statement not covered" >state.trick.leaderSeat</span>
+<span class="cstat-no" title="statement not covered" >    if (lastPlayer &amp;&amp; seatTeam[lastPlayer] !== myTeam) {</span>
+<span class="cstat-no" title="statement not covered" >      if (state.players[lastPlayer].hand.length &lt;= 4) {</span>
+<span class="cstat-no" title="statement not covered" >        score -= 500</span>
+      }
+    }
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return score</span>
+}
+&nbsp;
+// ===== 排序与评分 =====
+&nbsp;
+function <span class="fstat-no" title="function not covered" >sortCombos(h</span>and: Card[], combos: Combo[], current: Combo | null, mode: StrategyMode, state?: GameState, seat?: SeatId): Combo[] {
+  const pressure = <span class="cstat-no" title="statement not covered" >buildCardPressure(hand)</span>
+<span class="cstat-no" title="statement not covered" >  return [...combos].<span class="fstat-no" title="function not covered" >sort((a</span>, b) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    scoreCombo(pressure, a, current, mode, state, seat) - scoreCombo(pressure, b, current, mode, state, seat)</span>
+  )
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >scoreCombo(</span>
+  pressure: CardPressureMap,
+  combo: Combo,
+  current: Combo | null,
+  mode: StrategyMode,
+  state?: GameState,
+  seat?: SeatId
+): number {
+  const typeBase = <span class="cstat-no" title="statement not covered" >comboTypeBase(combo.type)</span>
+  const pressureCost = <span class="cstat-no" title="statement not covered" >combo.cards.<span class="fstat-no" title="function not covered" >reduce((s</span>um, card) =&gt; <span class="cstat-no" title="statement not covered" >sum + (pressure.get(card.id) ?? 0), 0</span>)</span>
+  const valueCost = <span class="cstat-no" title="statement not covered" >combo.primaryValue * valueWeight(combo.type, mode, current)</span>
+  const lengthBonus = <span class="cstat-no" title="statement not covered" >combo.length * -40 // 长牌型奖励（负分 = 好）</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (!current) {</span>
+    let score = <span class="cstat-no" title="statement not covered" >typeBase + pressureCost + valueCost + lengthBonus</span>
+<span class="cstat-no" title="statement not covered" >    if (state &amp;&amp; seat) <span class="cstat-no" title="statement not covered" >score += teamAwarenessScore(state, seat, combo, current)</span></span>
+<span class="cstat-no" title="statement not covered" >    return score</span>
+  }
+&nbsp;
+  const exactTypeBonus = <span class="cstat-no" title="statement not covered" >combo.type === current.type &amp;&amp; combo.length === current.length ? -300 : 0</span>
+  const sameTypeBonus = <span class="cstat-no" title="statement not covered" >combo.type === current.type ? -80 : 0</span>
+  const bombPenalty = <span class="cstat-no" title="statement not covered" >combo.type === 'bomb' ? 3000 : 0</span>
+  const rocketPenalty = <span class="cstat-no" title="statement not covered" >combo.type === 'rocket' ? 6000 : 0</span>
+  const overtakeCost = <span class="cstat-no" title="statement not covered" >Math.max(0, combo.primaryValue - current.primaryValue) * valueWeight(combo.type, mode, current)</span>
+&nbsp;
+  let score = <span class="cstat-no" title="statement not covered" >typeBase + pressureCost + valueCost + lengthBonus + exactTypeBonus + sameTypeBonus + bombPenalty + rocketPenalty + overtakeCost</span>
+<span class="cstat-no" title="statement not covered" >  if (state &amp;&amp; seat) <span class="cstat-no" title="statement not covered" >score += teamAwarenessScore(state, seat, combo, current)</span></span>
+<span class="cstat-no" title="statement not covered" >  return score</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >comboTypeBase(t</span>ype: Combo['type']): number {
+<span class="cstat-no" title="statement not covered" >  switch (type) {</span>
+    case 'single': <span class="cstat-no" title="statement not covered" >return 100</span>
+    case 'pair': <span class="cstat-no" title="statement not covered" >return 50</span>
+    case 'triple': <span class="cstat-no" title="statement not covered" >return 30</span>
+    case 'threePair': <span class="cstat-no" title="statement not covered" >return 28</span>
+    case 'straight': <span class="cstat-no" title="statement not covered" >return 15</span>
+    case 'pairStraight': <span class="cstat-no" title="statement not covered" >return 20</span>
+    case 'tripleStraight': <span class="cstat-no" title="statement not covered" >return 25</span>
+    case 'flushStraight': <span class="cstat-no" title="statement not covered" >return 10</span>
+    case 'bomb': <span class="cstat-no" title="statement not covered" >return 900</span>
+    case 'rocket': <span class="cstat-no" title="statement not covered" >return 1500</span>
+  }
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >valueWeight(t</span>ype: Combo['type'], mode: StrategyMode, current: Combo | null): number {
+<span class="cstat-no" title="statement not covered" >  if (mode === 'response' &amp;&amp; current) {</span>
+<span class="cstat-no" title="statement not covered" >    if (type === current.type) <span class="cstat-no" title="statement not covered" >return 3</span></span>
+<span class="cstat-no" title="statement not covered" >    if (type === 'bomb') <span class="cstat-no" title="statement not covered" >return 8</span></span>
+<span class="cstat-no" title="statement not covered" >    if (type === 'rocket') <span class="cstat-no" title="statement not covered" >return 12</span></span>
+  }
+<span class="cstat-no" title="statement not covered" >  switch (type) {</span>
+    case 'single': <span class="cstat-no" title="statement not covered" >return 1</span>
+    case 'pair': <span class="cstat-no" title="statement not covered" >return 2</span>
+    case 'triple': <span class="cstat-no" title="statement not covered" >return 3</span>
+    case 'threePair': <span class="cstat-no" title="statement not covered" >return 2</span>
+    case 'straight': <span class="cstat-no" title="statement not covered" >return 1</span>
+    case 'pairStraight': <span class="cstat-no" title="statement not covered" >return 1</span>
+    case 'tripleStraight': <span class="cstat-no" title="statement not covered" >return 1</span>
+    case 'flushStraight': <span class="cstat-no" title="statement not covered" >return 1</span>
+    case 'bomb': <span class="cstat-no" title="statement not covered" >return 12</span>
+    case 'rocket': <span class="cstat-no" title="statement not covered" >return 16</span>
+  }
+}
+&nbsp;
+// ===== 压力图 =====
+&nbsp;
+function <span class="fstat-no" title="function not covered" >buildCardPressure(h</span>and: Card[]): CardPressureMap {
+  const pressure = <span class="cstat-no" title="statement not covered" >new Map&lt;string, number&gt;()</span>
+  const byRank = <span class="cstat-no" title="statement not covered" >new Map&lt;number, Card[]&gt;()</span>
+<span class="cstat-no" title="statement not covered" >  for (const card of hand) {</span>
+    const list = <span class="cstat-no" title="statement not covered" >byRank.get(card.rankValue)</span>
+<span class="cstat-no" title="statement not covered" >    if (list) <span class="cstat-no" title="statement not covered" >list.push(card)</span></span>
+    else <span class="cstat-no" title="statement not covered" >byRank.set(card.rankValue, [card])</span>
+  }
+&nbsp;
+  const rankValues = <span class="cstat-no" title="statement not covered" >[...byRank.keys()].<span class="fstat-no" title="function not covered" >sort((a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a - b)</span></span>
+  const sequenceCards = <span class="cstat-no" title="statement not covered" >new Set&lt;string&gt;()</span>
+<span class="cstat-no" title="statement not covered" >  markStraights(hand, sequenceCards)</span>
+<span class="cstat-no" title="statement not covered" >  markPairStraights(hand, sequenceCards)</span>
+<span class="cstat-no" title="statement not covered" >  markTripleStraights(hand, sequenceCards)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  for (const card of hand) {</span>
+    let cost = <span class="cstat-no" title="statement not covered" >0</span>
+    const sameRankCount = <span class="cstat-no" title="statement not covered" >byRank.get(card.rankValue)?.length ?? 1</span>
+<span class="cstat-no" title="statement not covered" >    if (sameRankCount &gt;= 2) <span class="cstat-no" title="statement not covered" >cost += 220</span></span>
+<span class="cstat-no" title="statement not covered" >    if (sameRankCount &gt;= 3) <span class="cstat-no" title="statement not covered" >cost += 420</span></span>
+<span class="cstat-no" title="statement not covered" >    if (sameRankCount &gt;= 4) <span class="cstat-no" title="statement not covered" >cost += 980</span></span>
+<span class="cstat-no" title="statement not covered" >    if (card.rank === 'SJ' || card.rank === 'BJ') <span class="cstat-no" title="statement not covered" >cost += 820</span></span>
+<span class="cstat-no" title="statement not covered" >    if (card.rank === 'A') <span class="cstat-no" title="statement not covered" >cost += 120  // A 保留价值较高</span></span>
+<span class="cstat-no" title="statement not covered" >    if (sequenceCards.has(card.id)) <span class="cstat-no" title="statement not covered" >cost += 360</span></span>
+<span class="cstat-no" title="statement not covered" >    if (card.rankValue &lt;= 12) <span class="cstat-no" title="statement not covered" >cost += rankPressure(rankValues, card.rankValue)</span></span>
+<span class="cstat-no" title="statement not covered" >    pressure.set(card.id, cost)</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return pressure</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >rankPressure(r</span>ankValues: number[], rankValue: number): number {
+  const left = <span class="cstat-no" title="statement not covered" >rankValues.includes(rankValue - 1)</span>
+  const right = <span class="cstat-no" title="statement not covered" >rankValues.includes(rankValue + 1)</span>
+  const twoLeft = <span class="cstat-no" title="statement not covered" >rankValues.includes(rankValue - 2)</span>
+  const twoRight = <span class="cstat-no" title="statement not covered" >rankValues.includes(rankValue + 2)</span>
+  let cost = <span class="cstat-no" title="statement not covered" >0</span>
+<span class="cstat-no" title="statement not covered" >  if (left || right) <span class="cstat-no" title="statement not covered" >cost += 140</span></span>
+<span class="cstat-no" title="statement not covered" >  if (left &amp;&amp; right) <span class="cstat-no" title="statement not covered" >cost += 180</span></span>
+<span class="cstat-no" title="statement not covered" >  if (twoLeft || twoRight) <span class="cstat-no" title="statement not covered" >cost += 70</span></span>
+<span class="cstat-no" title="statement not covered" >  return cost</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >markStraights(h</span>and: Card[], set: Set&lt;string&gt;): void {
+  const values = <span class="cstat-no" title="statement not covered" >uniquePlayableValues(hand)</span>
+<span class="cstat-no" title="statement not covered" >  for (let start = <span class="cstat-no" title="statement not covered" >0; s</span>tart &lt; values.length; start += 1) {</span>
+    let end = <span class="cstat-no" title="statement not covered" >start + 1</span>
+<span class="cstat-no" title="statement not covered" >    while (end &lt; values.length &amp;&amp; values[end] === values[end - 1] + 1) <span class="cstat-no" title="statement not covered" >end += 1</span></span>
+    const run = <span class="cstat-no" title="statement not covered" >values.slice(start, end)</span>
+<span class="cstat-no" title="statement not covered" >    if (run.length &lt; 5) <span class="cstat-no" title="statement not covered" >continue</span></span>
+<span class="cstat-no" title="statement not covered" >    for (const value of run) {</span>
+      const card = <span class="cstat-no" title="statement not covered" >hand.<span class="fstat-no" title="function not covered" >find((i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item.rankValue === value)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (card) <span class="cstat-no" title="statement not covered" >set.add(card.id)</span></span>
+    }
+<span class="cstat-no" title="statement not covered" >    start = end - 1</span>
+  }
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >markPairStraights(h</span>and: Card[], set: Set&lt;string&gt;): void {
+  const byRank = <span class="cstat-no" title="statement not covered" >groupByRank(hand)</span>
+  const values = <span class="cstat-no" title="statement not covered" >[...byRank.entries()].<span class="fstat-no" title="function not covered" >filter(([</span>rank, cards]) =&gt; <span class="cstat-no" title="statement not covered" >rank &lt;= 12 &amp;&amp; cards.length &gt;= 2).<span class="fstat-no" title="function not covered" ></span>map(([</span>rank]) =&gt; <span class="cstat-no" title="statement not covered" >rank).<span class="fstat-no" title="function not covered" ></span>sort((a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a - b)</span></span>
+<span class="cstat-no" title="statement not covered" >  for (let start = <span class="cstat-no" title="statement not covered" >0; s</span>tart &lt; values.length; start += 1) {</span>
+    let end = <span class="cstat-no" title="statement not covered" >start + 1</span>
+<span class="cstat-no" title="statement not covered" >    while (end &lt; values.length &amp;&amp; values[end] === values[end - 1] + 1) <span class="cstat-no" title="statement not covered" >end += 1</span></span>
+    const run = <span class="cstat-no" title="statement not covered" >values.slice(start, end)</span>
+<span class="cstat-no" title="statement not covered" >    if (run.length &lt; 3) <span class="cstat-no" title="statement not covered" >continue</span></span>
+<span class="cstat-no" title="statement not covered" >    for (const value of run) {</span>
+<span class="cstat-no" title="statement not covered" >      for (const card of byRank.get(value) ?? []) <span class="cstat-no" title="statement not covered" >set.add(card.id)</span></span>
+    }
+<span class="cstat-no" title="statement not covered" >    start = end - 1</span>
+  }
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >markTripleStraights(h</span>and: Card[], set: Set&lt;string&gt;): void {
+  const byRank = <span class="cstat-no" title="statement not covered" >groupByRank(hand)</span>
+  const values = <span class="cstat-no" title="statement not covered" >[...byRank.entries()].<span class="fstat-no" title="function not covered" >filter(([</span>rank, cards]) =&gt; <span class="cstat-no" title="statement not covered" >rank &lt;= 12 &amp;&amp; cards.length &gt;= 3).<span class="fstat-no" title="function not covered" ></span>map(([</span>rank]) =&gt; <span class="cstat-no" title="statement not covered" >rank).<span class="fstat-no" title="function not covered" ></span>sort((a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a - b)</span></span>
+<span class="cstat-no" title="statement not covered" >  for (let start = <span class="cstat-no" title="statement not covered" >0; s</span>tart &lt; values.length; start += 1) {</span>
+    let end = <span class="cstat-no" title="statement not covered" >start + 1</span>
+<span class="cstat-no" title="statement not covered" >    while (end &lt; values.length &amp;&amp; values[end] === values[end - 1] + 1) <span class="cstat-no" title="statement not covered" >end += 1</span></span>
+    const run = <span class="cstat-no" title="statement not covered" >values.slice(start, end)</span>
+<span class="cstat-no" title="statement not covered" >    if (run.length &lt; 2) <span class="cstat-no" title="statement not covered" >continue</span></span>
+<span class="cstat-no" title="statement not covered" >    for (const value of run) {</span>
+<span class="cstat-no" title="statement not covered" >      for (const card of byRank.get(value) ?? []) <span class="cstat-no" title="statement not covered" >set.add(card.id)</span></span>
+    }
+<span class="cstat-no" title="statement not covered" >    start = end - 1</span>
+  }
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >groupByRank(h</span>and: Card[]): Map&lt;number, Card[]&gt; {
+  const map = <span class="cstat-no" title="statement not covered" >new Map&lt;number, Card[]&gt;()</span>
+<span class="cstat-no" title="statement not covered" >  for (const card of hand) {</span>
+    const list = <span class="cstat-no" title="statement not covered" >map.get(card.rankValue)</span>
+<span class="cstat-no" title="statement not covered" >    if (list) <span class="cstat-no" title="statement not covered" >list.push(card)</span></span>
+    else <span class="cstat-no" title="statement not covered" >map.set(card.rankValue, [card])</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return map</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >uniquePlayableValues(h</span>and: Card[]): number[] {
+<span class="cstat-no" title="statement not covered" >  return [...new Set(hand.<span class="fstat-no" title="function not covered" >filter((c</span>ard) =&gt; <span class="cstat-no" title="statement not covered" >card.rankValue &lt;= 12).<span class="fstat-no" title="function not covered" ></span>map((c</span>ard) =&gt; <span class="cstat-no" title="statement not covered" >card.rankValue))</span>].<span class="fstat-no" title="function not covered" >sort((a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a - b)</span></span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >fallbackCombo(h</span>and: Card[]): Combo {
+  const card = <span class="cstat-no" title="statement not covered" >[...hand].<span class="fstat-no" title="function not covered" >sort((a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >a.rankValue - b.rankValue || a.deckId - b.deckId || a.id.localeCompare(b.id))</span>[0] ?? hand[0]</span>
+<span class="cstat-no" title="statement not covered" >  return { type: 'single', cards: [card], primaryValue: card?.rankValue ?? 0, length: 1 }</span>
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-05-02T15:59:43.861Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

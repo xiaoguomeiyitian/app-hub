@@ -1,0 +1,195 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a1a;
+  font-family: system-ui, -apple-system, sans-serif;
+  /* 防止触控时页面滚动/缩放 */
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+/* ===== 虚拟控件容器 ===== */
+#touch-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ===== 左侧摇杆 ===== */
+.joystick-zone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.joystick-base {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* 扩大触控区域 */
+  margin: 10px;
+}
+
+.joystick-stick {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  position: absolute;
+  transition: transform 0.05s ease-out;
+  pointer-events: none;
+}
+
+/* ===== 右侧按钮 ===== */
+.btn-zone {
+  position: absolute;
+  right: 15px;
+  bottom: 30px;
+  display: grid;
+  grid-template-areas:
+    ".     attack ."
+    "dodge .      interact";
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.touch-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.08s, opacity 0.08s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.touch-btn.pressed {
+  transform: scale(0.88);
+  opacity: 0.7;
+}
+
+.btn-attack {
+  grid-area: attack;
+  background: rgba(231, 76, 60, 0.5);
+  border-color: rgba(231, 76, 60, 0.6);
+}
+
+.btn-dodge {
+  grid-area: dodge;
+  background: rgba(52, 152, 219, 0.5);
+  border-color: rgba(52, 152, 219, 0.6);
+}
+
+.btn-interact {
+  grid-area: interact;
+  background: rgba(46, 204, 113, 0.5);
+  border-color: rgba(46, 204, 113, 0.6);
+}
+
+/* ===== 横屏适配 ===== */
+@media (orientation: landscape) {
+  .joystick-zone {
+    width: 160px;
+    height: 160px;
+  }
+
+  .joystick-base {
+    width: 110px;
+    height: 110px;
+  }
+
+  .joystick-stick {
+    width: 46px;
+    height: 46px;
+  }
+
+  .btn-zone {
+    right: 20px;
+    bottom: 20px;
+    gap: 8px;
+  }
+
+  .touch-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+  }
+}
+
+/* ===== 桌面端隐藏 ===== */
+@media (pointer: fine) {
+  #touch-controls {
+    display: none !important;
+  }
+}
+
+/* 极小屏 */
+@media (max-width: 400px) {
+  .touch-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+  .btn-zone {
+    right: 10px;
+    bottom: 20px;
+    gap: 8px;
+  }
+
+  .joystick-base {
+    width: 100px;
+    height: 100px;
+  }
+
+  .joystick-stick {
+    width: 42px;
+    height: 42px;
+  }
+}

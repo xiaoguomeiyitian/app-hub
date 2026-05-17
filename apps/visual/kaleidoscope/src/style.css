@@ -1,0 +1,9 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d1117;color:#e6edf3;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:16px}
+h1{font-size:1.3rem;margin-bottom:12px}
+.toolbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
+.btn{background:#161b22;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:.85rem}
+.btn:hover{background:#30363d}
+.btn.active{background:#6c5ce7;border-color:#6c5ce7;color:#fff}
+.color-pick{width:36px;height:36px;border:none;border-radius:8px;cursor:pointer;background:none}
+canvas{background:#0d1117;border-radius:50%;cursor:crosshair;box-shadow:0 0 40px rgba(108,92,231,.3);touch-action:none}

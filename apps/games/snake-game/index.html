@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="贪吃蛇大作战 - 经典贪吃蛇重生，支持单机4模式与在线多人实时对战" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <meta property="og:title" content="贪吃蛇大作战" />
+  <meta property="og:description" content="经典贪吃蛇重生 · 单机4模式 · 在线多人对战" />
+  <meta property="og:type" content="website" />
+  <link rel="manifest" href="/snake-game/manifest.json" />
+  <title>贪吃蛇大作战</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <div id="app" role="application" aria-label="贪吃蛇大作战">
+
+    <!-- ===== 入口选择画面 ===== -->
+    <div id="entry-screen" class="screen">
+      <div class="entry-bg"></div>
+      <div class="entry-content">
+        <div class="entry-logo">
+          <span class="logo-emoji">🐍</span>
+          <h1>贪吃蛇大作战</h1>
+          <p class="entry-tagline">经典重生 · 多人竞技</p>
+        </div>
+        <div class="entry-modes">
+          <button id="entry-single-btn" class="entry-card primary">
+            <div class="entry-card-icon">🎮</div>
+            <div class="entry-card-info">
+              <div class="entry-card-title">开始游戏</div>
+              <div class="entry-card-desc">7 种模式 · 无限挑战</div>
+            </div>
+          </button>
+          <button id="entry-online-btn" class="entry-card online">
+            <div class="entry-card-icon">🌐</div>
+            <div class="entry-card-info">
+              <div class="entry-card-title">联机对战</div>
+              <div class="entry-card-desc">匹配 · 房间 · 实时对战</div>
+            </div>
+          </button>
+        </div>
+        <div class="entry-stats">
+          <span>🏆 最高分: <b id="entry-high-score">0</b></span>
+          <span class="entry-stats-sep">·</span>
+          <span>🎮 今日局数: <b id="entry-today-games">0</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 单机游戏画面 ===== -->
+    <div id="single-screen" class="screen hidden">
+      <div class="top-bar">
+        <button id="back-to-entry-from-single" class="back-btn">← 返回</button>
+        <div id="hud">
+          <div class="hud-item">分数: <span id="score">0</span></div>
+          <div class="hud-item">最高分: <span id="high-score">0</span></div>
+          <div class="hud-item">速度: <span id="speed">1</span> 级</div>
+        </div>
+      </div>
+      <div id="dual-score" class="hidden"></div>
+      <div id="controls-bar">
+        <div id="mode-buttons">
+          <button id="mode-classic" class="mode-btn active">
+            <span class="mode-icon">🍎</span>
+            <span class="mode-label">经典</span>
+          </button>
+          <button id="mode-maze" class="mode-btn">
+            <span class="mode-icon">🏰</span>
+            <span class="mode-label">迷宫</span>
+          </button>
+          <button id="mode-trail" class="mode-btn">
+            <span class="mode-icon">✨</span>
+            <span class="mode-label">造物主</span>
+          </button>
+          <button id="mode-dual" class="mode-btn">
+            <span class="mode-icon">🐍🐍</span>
+            <span class="mode-label">双蛇</span>
+          </button>
+        </div>
+        <div id="mode-buttons-row2">
+          <button id="mode-timelimit" class="mode-btn">
+            <span class="mode-icon">⏱️</span>
+            <span class="mode-label">限时</span>
+          </button>
+          <button id="mode-survival" class="mode-btn">
+            <span class="mode-icon">🔥</span>
+            <span class="mode-label">生存</span>
+          </button>
+          <button id="mode-royale" class="mode-btn">
+            <span class="mode-icon">⚔️</span>
+            <span class="mode-label">大逃杀</span>
+          </button>
+        </div>
+        <button id="mute-btn" class="icon-btn" title="静音开关">🔊</button>
+        <button id="legend-btn" class="icon-btn" title="图例">❓</button>
+        <button id="settings-btn" class="icon-btn" title="设置">⚙️</button>
+      </div>
+      <div id="effect-indicator"></div>
+      <div id="mode-indicator">
+        <span id="mode-timer" class="hidden"></span>
+        <span id="mode-border" class="hidden"></span>
+      </div>
+      <div id="skill-slots"></div>
+      <canvas id="game-canvas" role="img" aria-label="游戏画面"></canvas>
+
+      <!-- 食物/技能图例面板 -->
+      <div id="legend-panel" class="hidden">
+        <div class="legend-header">
+          <span>📋 图例</span>
+          <button id="legend-close" class="legend-close-btn">✕</button>
+        </div>
+        <div class="legend-section">
+          <h3>🍎 食物种类</h3>
+          <div class="legend-grid">
+            <div class="legend-item"><span class="legend-dot" style="background:#ff6b6b"></span><span>普通食物 +1分</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#ffd93d"></span><span>金色食物 +3分</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#a29bfe"></span><span>紫色食物 +5分</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#fd79a8"></span><span>粉色食物 加速特效</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#00cec9"></span><span>青色食物 无敌特效</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#e17055"></span><span>炸弹食物 ⚠️ 减速</span></div>
+          </div>
+        </div>
+        <div class="legend-section">
+          <h3>⚡ 技能卡</h3>
+          <div class="legend-grid">
+            <div class="legend-item"><span class="legend-tag">加</span><span>加速冲刺 · 2秒极速</span></div>
+            <div class="legend-item"><span class="legend-tag">护</span><span>护盾 · 免疫碰撞</span></div>
+            <div class="legend-item"><span class="legend-tag">冻</span><span>时间冻结 · 冻结食物</span></div>
+            <div class="legend-item"><span class="legend-tag">分</span><span>双倍得分 · 5秒双倍</span></div>
+            <div class="legend-item"><span class="legend-tag">缩</span><span>缩身 · 缩短2节</span></div>
+            <div class="legend-item"><span class="legend-tag">磁</span><span>磁铁 · 吸引食物</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="overlay" class="visible">
+        <div id="menu">
+          <h1>🐍 贪吃蛇</h1>
+          <p id="menu-message">按 空格键 或 点击按钮 开始游戏</p>
+          <button id="start-btn">开始游戏</button>
+          <div id="final-score" class="hidden">
+            本次得分: <span id="final-score-value">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="pause-overlay" class="hidden">
+        <h2>⏸ 已暂停</h2>
+        <p>按 空格键 继续</p>
+      </div>
+      <div id="mobile-controls">
+        <div class="dpad">
+          <button class="dpad-btn dpad-up" data-dir="UP">▲</button>
+          <button class="dpad-btn dpad-left" data-dir="LEFT">◀</button>
+          <button class="dpad-btn dpad-center" id="dpad-pause">⏸</button>
+          <button class="dpad-btn dpad-right" data-dir="RIGHT">▶</button>
+          <button class="dpad-btn dpad-down" data-dir="DOWN">▼</button>
+        </div>
+        <div class="skill-btns">
+          <button class="skill-btn" data-skill="0">1</button>
+          <button class="skill-btn" data-skill="1">2</button>
+          <button class="skill-btn" data-skill="2">3</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 联机对战画面 ===== -->
+    <div id="online-screen" class="screen hidden">
+      <div class="top-bar">
+        <button id="back-to-entry-from-online" class="back-btn">← 返回</button>
+        <div id="online-hud">
+          <div class="hud-item" id="online-status">正在连接...</div>
+          <div class="hud-item" id="online-room-info" style="display:none"></div>
+        </div>
+      </div>
+      <canvas id="online-canvas" role="img" aria-label="在线对战画面"></canvas>
+
+      <!-- 联机大厅 -->
+      <div id="online-lobby">
+        <div class="online-lobby-content">
+          <div class="online-lobby-header">
+            <h2>🌐 在线对战</h2>
+            <div class="online-lobby-stats" id="online-lobby-stats"></div>
+          </div>
+          <input id="online-nickname" class="online-input" maxlength="16" placeholder="输入你的昵称" />
+          <button id="online-match-btn" class="online-btn match big">⚔️ 快速匹配</button>
+          <p class="online-match-hint">匹配到对手立即开始 · 无对手时机器人陪玩</p>
+          <div class="online-divider"><span>或</span></div>
+          <div class="online-room-row">
+            <input id="online-room-id" class="online-input" maxlength="8" placeholder="房间号" />
+            <button id="online-join-btn" class="online-btn">加入</button>
+          </div>
+          <button id="online-create-btn" class="online-btn primary small">🏠 创建房间</button>
+          <button id="online-settings-btn" class="online-btn small" style="display:none">⚙️ 房间设置</button>
+        </div>
+      </div>
+
+      <!-- 匹配中 -->
+      <div id="matching-overlay" class="hidden">
+        <div class="matching-status">
+          <div class="snake-spinner">
+            <div class="snake-body-seg"></div>
+            <div class="snake-body-seg"></div>
+            <div class="snake-body-seg"></div>
+            <div class="snake-body-seg"></div>
+            <div class="snake-body-seg"></div>
+          </div>
+          <p class="matching-title">匹配中... <span id="match-timer">0</span>s</p>
+          <p id="match-hint" class="match-tip">正在寻找对手</p>
+          <div class="match-tips">
+            <p id="match-tip-text">💡 使用方向键控制蛇移动</p>
+          </div>
+          <button id="online-cancel-match-btn" class="online-btn danger">取消匹配</button>
+        </div>
+      </div>
+
+      <!-- 房间内 -->
+      <div id="online-room-panel" class="hidden">
+        <div class="online-room-detail">
+          <div class="online-room-badge" id="online-room-phase">房间待机</div>
+          <div id="online-room-header"></div>
+          <div id="online-room-tip" class="online-room-tip">进入房间后请先点击“准备”，房主可点击“开始”发起对局。</div>
+          <div class="online-row online-actions">
+            <button id="online-ready-btn" class="online-btn">准备</button>
+            <button id="online-start-btn" class="online-btn">开始</button>
+            <button id="online-leave-btn" class="online-btn danger">离开房间</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== 设置面板 ===== -->
+  <div id="settings-overlay" class="hidden">
+    <div class="settings-panel">
+      <h2>⚙️ 设置</h2>
+      <div class="settings-group">
+        <label>🔊 音效音量 <input type="range" id="setting-sfx" min="0" max="100" value="80" /></label>
+      </div>
+      <div class="settings-group">
+        <label>🎵 BGM 音量 <input type="range" id="setting-bgm" min="0" max="100" value="50" /></label>
+      </div>
+      <div class="settings-group">
+        <label>📳 触觉反馈 <input type="checkbox" id="setting-haptic" checked /></label>
+      </div>
+      <div class="settings-group">
+        <label>🎨 主题</label>
+        <div class="theme-grid">
+          <div class="theme-swatch active" data-theme="default" style="background:linear-gradient(135deg,#1a1a2e,#302b63)" title="默认"></div>
+          <div class="theme-swatch" data-theme="neon" style="background:linear-gradient(135deg,#0a0a1a,#00ff88)" title="霓虹"></div>
+          <div class="theme-swatch" data-theme="retro" style="background:linear-gradient(135deg,#2c2c2c,#ff8800)" title="复古"></div>
+          <div class="theme-swatch" data-theme="nature" style="background:linear-gradient(135deg,#1a2e1a,#88cc44)" title="自然"></div>
+          <div class="theme-swatch" data-theme="ocean" style="background:linear-gradient(135deg,#0a1a2e,#44aaff)" title="海洋"></div>
+        </div>
+      </div>
+      <button class="settings-close" id="settings-close">关闭</button>
+    </div>
+  </div>
+
+  <!-- ===== 新手引导 ===== -->
+  <div id="tutorial-overlay" class="hidden">
+    <div class="tutorial-panel">
+      <div class="tutorial-slides" id="tutorial-slides">
+        <div class="tutorial-slide active" data-slide="0">
+          <div class="tutorial-icon">🎮</div>
+          <h2>操作说明</h2>
+          <div class="tutorial-body">
+            <p>⌨️ 方向键 / WASD 控制方向</p>
+            <p>📱 手机滑动屏幕控制方向</p>
+            <p>⏸ 空格键暂停游戏</p>
+            <p>🔢 按 1/2/3 使用技能卡</p>
+          </div>
+        </div>
+        <div class="tutorial-slide" data-slide="1">
+          <div class="tutorial-icon">🍎</div>
+          <h2>食物种类</h2>
+          <div class="tutorial-body">
+            <p>🔴 普通食物 +1分</p>
+            <p>🟡 金色食物 +3分</p>
+            <p>🟣 紫色食物 +5分</p>
+            <p>💗 粉色食物 加速特效</p>
+            <p>💎 青色食物 无敌特效</p>
+            <p>💣 炸弹食物 ⚠️ 缩短3节</p>
+          </div>
+        </div>
+        <div class="tutorial-slide" data-slide="2">
+          <div class="tutorial-icon">⚡</div>
+          <h2>技能卡</h2>
+          <div class="tutorial-body">
+            <p>🟢 加速冲刺 - 2秒极速移动</p>
+            <p>🟣 护盾 - 免疫碰撞伤害</p>
+            <p>🔵 时间冻结 - 冻结所有食物</p>
+            <p>🟡 双倍得分 - 5秒分数翻倍</p>
+            <p>技巧：吃食物时有几率获得技能卡</p>
+          </div>
+        </div>
+      </div>
+      <div class="tutorial-dots" id="tutorial-dots">
+        <span class="tutorial-dot active"></span>
+        <span class="tutorial-dot"></span>
+        <span class="tutorial-dot"></span>
+      </div>
+      <div class="tutorial-actions">
+        <button id="tutorial-skip" class="tutorial-btn secondary">跳过教程</button>
+        <button id="tutorial-next" class="tutorial-btn primary">下一步</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+<a class="back-to-lobby" href="../">← 返回大厅</a></body>
+</html>

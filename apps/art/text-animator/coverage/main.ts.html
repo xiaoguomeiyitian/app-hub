@@ -1,0 +1,451 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for main.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="index.html">All files</a> main.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">63.63% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>21/33</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">85.71% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>12/14</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">36.36% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>4/11</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">80.76% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>21/26</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line medium'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import './style.css';
+import '@app-hub/utils/theme/variables.css';
+&nbsp;
+interface AnimDef { name: string; label: string; css: string; style: string }
+&nbsp;
+let animations: AnimDef[] = [
+  { name: 'typewriter', label: '⌨️ 打字机', css: '@keyframes typewriter{from{width:0}to{width:100%}}', style: 'overflow:hidden;white-space:nowrap;border-right:3px solid currentColor;width:0;animation:typewriter 2s steps(20) forwards' },
+  { name: 'bounceIn', label: '🎾 逐字弹入', css: '@keyframes bounceIn{0%{transform:scale(0);opacity:0}50%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}', style: 'animation:bounceIn 0.6s ease-out forwards' },
+  { name: 'neonGlow', label: '💡 霓虹闪烁', css: '@keyframes neonGlow{0%,100%{text-shadow:0 0 10px currentColor,0 0 20px currentColor}50%{text-shadow:0 0 20px currentColor,0 0 40px currentColor,0 0 60px currentColor}}', style: 'animation:neonGlow 1.5s ease-in-out infinite;color:#ff6ec7' },
+  { name: 'flipIn', label: '🔄 翻转入场', css: '@keyframes flipIn{0%{transform:rotateX(90deg);opacity:0}100%{transform:rotateX(0);opacity:1}}', style: 'animation:flipIn 0.8s ease-out forwards;perspective:500px' },
+  { name: 'slideUp', label: '⬆️ 上滑淡入', css: '@keyframes slideUp{0%{transform:translateY(40px);opacity:0}100%{transform:translateY(0);opacity:1}}', style: 'animation:slideUp 0.6s ease-out forwards' },
+  { name: 'fadeIn', label: '🌅 淡入', css: '@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}', style: 'animation:fadeIn 1s ease-in forwards' },
+  { name: 'shake', label: '📳 抖动', css: '@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}', style: 'animation:shake 0.4s ease-in-out infinite' },
+  { name: 'rainbow', label: '🌈 彩虹渐变', css: '@keyframes rainbow{0%{color:#ff0000}17%{color:#ff8800}33%{color:#ffff00}50%{color:#00ff00}67%{color:#0088ff}83%{color:#8800ff}100%{color:#ff0000}}', style: 'animation:rainbow 3s linear infinite' },
+  { name: 'wave', label: '🌊 波浪', css: '@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}', style: 'animation:wave 1s ease-in-out infinite' },
+  { name: 'glitch', label: '👾 故障风', css: '@keyframes glitch{0%{transform:translate(0)}20%{transform:translate(-3px,3px)}40%{transform:translate(-3px,-3px)}60%{transform:translate(3px,3px)}80%{transform:translate(3px,-3px)}100%{transform:translate(0)}}', style: 'animation:glitch 0.3s linear infinite;color:#ff00ff;text-shadow:2px 0 #0ff,-2px 0 #f0f' },
+  { name: 'letterSpacing', label: '📐 展开间距', css: '@keyframes letterSpacing{0%{letter-spacing:-10px;opacity:0}100%{letter-spacing:12px;opacity:1}}', style: 'animation:letterSpacing 1s ease-out forwards' },
+  { name: 'scaleUp', label: '🔍 放大弹出', css: '@keyframes scaleUp{0%{transform:scale(0) rotate(-10deg);opacity:0}70%{transform:scale(1.1) rotate(2deg)}100%{transform:scale(1) rotate(0);opacity:1}}', style: 'animation:scaleUp 0.7s cubic-bezier(.34,1.56,.64,1) forwards' },
+];
+&nbsp;
+// Generate additional animation presets to exceed 50 total
+const simpleTransforms = [
+  { name: 'rotate360', label: '🔄 旋转', from: 'transform:rotate(0deg)', to: 'transform:rotate(360deg)', duration: '2s', timing: 'linear' },
+  { name: 'rotateX360', label: '🔃 X轴旋转', from: 'transform:rotateX(0deg)', to: 'transform:rotateX(360deg)' },
+  { name: 'rotateY360', label: '🔃 Y轴旋转', from: 'transform:rotateY(0deg)', to: 'transform:rotateY(360deg)' },
+  { name: 'rotateHalf', label: '🔂 半转', from: 'transform:rotate(0deg)', to: 'transform:rotate(180deg)' },
+  { name: 'scalePulse', label: '🔍 缩放脉冲', from: 'transform:scale(1)', to: 'transform:scale(1.1)', duration: '0.8s', timing: 'ease-in-out' },
+  { name: 'scaleBounce', label: '⚡ 弹性缩放', from: 'transform:scale(1)', to: 'transform:scale(1.3)', duration: '0.6s', timing: 'cubic-bezier(0.34,1.56,0.64,1)' },
+  { name: 'translateX', label: '↔️ 左右移动', from: 'transform:translateX(-10px)', to: 'transform:translateX(10px)' },
+  { name: 'translateY', label: '↕️ 上下移动', from: 'transform:translateY(-8px)', to: 'transform:translateY(8px)' },
+  { name: 'skewXAnim', label: '📐 X倾斜', from: 'transform:skewX(-10deg)', to: 'transform:skewX(10deg)' },
+  { name: 'skewYAnim', label: '📐 Y倾斜', from: 'transform:skewY(-5deg)', to: 'transform:skewY(5deg)' },
+  { name: 'opacityFade', label: '💨 透明度闪烁', from: 'opacity:0.3', to: 'opacity:1', duration: '1.5s' },
+  { name: 'hueRotate', label: '🌈 色相旋转', from: 'filter:hue-rotate(0deg)', to: 'filter:hue-rotate(360deg)', duration: '3s', timing: 'linear' },
+  { name: 'saturate', label: '🎨 饱和度', from: 'filter:saturate(80%)', to: 'filter:saturate(200%)' },
+  { name: 'brightness', label: '💡 亮度', from: 'filter:brightness(80%)', to: 'filter:brightness(120%)' },
+  { name: 'contrast', label: '🖤 对比度', from: 'filter:contrast(80%)', to: 'filter:contrast(120%)' },
+  { name: 'blurIn', label: '🌫️ 模糊', from: 'filter:blur(4px)', to: 'filter:blur(0px)' },
+  { name: 'dropShadow', label: '🌑 阴影闪烁', from: 'filter:drop-shadow(0 0 0 rgba(0,0,0,0))', to: 'filter:drop-shadow(0 0 10px rgba(0,0,0,0.5))' },
+  { name: 'zoomRotate', label: '🔍 旋转缩放', from: 'transform:scale(1) rotate(0deg)', to: 'transform:scale(1.2) rotate(180deg)', duration: '3s' },
+  { name: 'translateScale', label: '↔️ 平移缩放', from: 'transform:translateX(-8px) scale(1)', to: 'transform:translateX(8px) scale(1.1)' },
+  { name: 'skewRotate', label: '🔀 倾斜旋转', from: 'transform:skewX(-5deg) rotate(0deg)', to: 'transform:skewX(5deg) rotate(360deg)', duration: '2.5s' },
+  { name: 'opacityRotate', label: '💫 透明度旋转', from: 'opacity:0.5; transform:rotate(0deg)', to: 'opacity:1; transform:rotate(360deg)' },
+];
+simpleTransforms.forEach((a: any) =&gt; {
+  animations.push({
+    name: a.name,
+    label: a.label,
+    css: `@keyframes ${a.name}{from{${a.from}}to{${a.to}}}`,
+    style: `animation:${a.name} ${a.duration || '2s'} ${a.timing || 'ease-in-out'} ${a.infinite===false ? <span class="branch-0 cbranch-no" title="branch not covered" >'forwards' : '</span>infinite'}`
+  });
+});
+&nbsp;
+// Additional transforms to exceed 50 total
+const moreTransforms = [
+  { name: 'blurIn', label: '🌫️ 模糊入场', from: 'filter:blur(8px)', to: 'filter:blur(0px)', duration: '0.8s', infinite: false },
+  { name: 'blurOut', label: '🌫️ 模糊出场', from: 'filter:blur(0px)', to: 'filter:blur(8px)', duration: '0.8s', infinite: false },
+  { name: 'brightnessPulse', label: '💡 亮度脉冲', from: 'filter:brightness(80%)', to: 'filter:brightness(120%)', duration: '1.2s' },
+  { name: 'contrastPulse', label: '🖤 对比度脉冲', from: 'filter:contrast(90%)', to: 'filter:contrast(110%)', duration: '1.2s' },
+  { name: 'saturatePulse', label: '🎨 饱和度脉冲', from: 'filter:saturate(90%)', to: 'filter:saturate(110%)', duration: '1.2s' },
+  { name: 'hueRotateCycle', label: '🌈 色相循环', from: 'filter:hue-rotate(0deg)', to: 'filter:hue-rotate(360deg)', duration: '2s', timing: 'linear' },
+  { name: 'textShadowPulse', label: '🌑 阴影脉冲', from: 'text-shadow:0 0 5px currentColor', to: 'text-shadow:0 0 20px currentColor', duration: '1.5s' },
+  { name: 'letterSpacingExpand', label: '📐 字间距展开', from: 'letter-spacing:0px', to: 'letter-spacing:8px', duration: '0.8s', infinite: false },
+  { name: 'wordSpacingExpand', label: '↔️ 词间距展开', from: 'word-spacing:0px', to: 'word-spacing:8px', duration: '0.8s', infinite: false },
+  { name: 'underlineGrow', label: '📏 下划线展开', from: 'text-decoration-underline-offset:0px;text-decoration-thickness:2px', to: 'text-decoration-underline-offset:4px;text-decoration-thickness:4px', duration: '0.5s', infinite: false },
+  { name: 'lineThrough', label: '📝 删除线', from: 'text-decoration:none', to: 'text-decoration:line-through', duration: '0.3s', infinite: false },
+  { name: 'overlineAppear', label: '🔗 上划线', from: 'text-decoration:none', to: 'text-decoration:overline', duration: '0.3s', infinite: false },
+  { name: 'blurRotate', label: '🌪️ 模糊旋转', from: 'filter:blur(4px) rotate(0deg)', to: 'filter:blur(0px) rotate(360deg)', duration: '1.5s' },
+  { name: 'skewRotateScale', label: '🔀 倾斜旋转缩放', from: 'transform:skewX(-5deg) rotate(0deg) scale(0.8)', to: 'transform:skewX(5deg) rotate(360deg) scale(1.1)', duration: '2s' },
+  { name: 'opacityTranslate', label: '💧 透明度平移', from: 'opacity:0; transform:translateX(-20px)', to: 'opacity:1; transform:translateX(0px)', duration: '0.8s', infinite: false },
+  { name: 'colorShift', label: '🎨 颜色变换', from: 'color:#ff0000', to: 'color:#0000ff', duration: '2s' },
+  { name: 'jitter', label: '🕹️ 抖动加速', from: 'transform:translate(0)', to: 'transform:translate(-2px,2px)', duration: '0.1s' },
+  { name: 'pulseScale', label: '💓 心跳缩放', from: 'transform:scale(1)', to: 'transform:scale(1.05)', duration: '0.3s', timing: 'ease-in-out' },
+];
+moreTransforms.forEach((a: any) =&gt; {
+  animations.push({
+    name: a.name,
+    label: a.label,
+    css: `@keyframes ${a.name}{from{${a.from}}to{${a.to}}}`,
+    style: `animation:${a.name} ${a.duration || <span class="branch-1 cbranch-no" title="branch not covered" >'1s'} </span>${a.timing || 'ease-in-out'} ${a.infinite===false ? 'forwards' : 'infinite'}`
+  });
+});
+let text = 'Hello World!';
+let currentAnim = animations[0];
+let replayKey = 0;
+&nbsp;
+function render() {
+  const app = document.getElementById('app')!;
+  app.innerHTML = `
+    &lt;h1&gt;✨ 文字动画工坊&lt;/h1&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="text" id="textInput" value="${text}" placeholder="输入文字..."/&gt;
+      &lt;select id="animSelect"&gt;${animations.map(a =&gt; `&lt;option value="${a.name}" ${a.name===currentAnim.name?'selected':''}&gt;${a.label}&lt;/option&gt;`).join('')}&lt;/select&gt;
+      &lt;button class="btn primary" id="replayBtn"&gt;▶️ 重播&lt;/button&gt;
+      &lt;button class="btn" id="exportBtn"&gt;📋 导出代码&lt;/button&gt;
+      &lt;button class="btn" id="exportGifBtn"&gt;📼 导出 GIF&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="preview" key="${replayKey}"&gt;
+      &lt;span id="animatedText" style="${currentAnim.style}"&gt;${text}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="code-block" id="codeBlock"&gt;&lt;/div&gt;
+  `;
+&nbsp;
+  document.getElementById('textInput')!.addEventListener(<span class="fstat-no" title="function not covered" >'input', e</span> =&gt; { <span class="cstat-no" title="statement not covered" >text = (e.target as HTMLInputElement).value; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('animSelect')!.addEventListener(<span class="fstat-no" title="function not covered" >'change', e</span> =&gt; { <span class="cstat-no" title="statement not covered" >currentAnim = animations.<span class="fstat-no" title="function not covered" >find(a</span> =&gt; <span class="cstat-no" title="statement not covered" >a.name === (e.target as HTMLSelectElement).value)!</span>; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('replayBtn')!.addEventListener(<span class="fstat-no" title="function not covered" >'click', () =&gt; {</span> <span class="cstat-no" title="statement not covered" >replayKey++; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('exportBtn')!.addEventListener(<span class="fstat-no" title="function not covered" >'click', () =&gt; {</span>
+    const code = <span class="cstat-no" title="statement not covered" >`&lt;style&gt;\n${currentAnim.css}\n.animated { ${currentAnim.style.replace(/;+/g,';\n  ')} }\n&lt;/style&gt;\n&lt;span class="animated"&gt;${text}&lt;/span&gt;`;</span>
+    const codeEl = <span class="cstat-no" title="statement not covered" >document.getElementById('codeBlock')!</span>;
+<span class="cstat-no" title="statement not covered" >    codeEl.textContent = code;</span>
+<span class="cstat-no" title="statement not covered" >    navigator.clipboard?.writeText(code).<span class="fstat-no" title="function not covered" >catch(() =&gt; {</span>});</span>
+  });
+  document.getElementById('exportGifBtn')!.addEventListener(<span class="fstat-no" title="function not covered" >'click', () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    alert('GIF 导出功能待后续实现');</span>
+  });
+&nbsp;
+  // Show initial code
+  const code = `&lt;style&gt;\n${currentAnim.css}\n.animated { ${currentAnim.style.replace(/;+/g,';\n  ')} }\n&lt;/style&gt;\n&lt;span class="animated"&gt;${text}&lt;/span&gt;`;
+  document.getElementById('codeBlock')!.textContent = code;
+}
+&nbsp;
+render();
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-05-02T15:31:20.909Z
+            </div>
+        <script src="prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
+    </body>
+</html>
+    

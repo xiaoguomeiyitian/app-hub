@@ -1,0 +1,13 @@
+@import url('@app-hub/utils/theme/variables.css');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;padding:24px;display:flex;flex-direction:column;align-items:center}
+h1{font-size:1.5rem;margin-bottom:16px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin-bottom:16px}
+.btn{background:var(--accent);color:var(--bg-primary);border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:.85rem}
+.btn:hover{background:color-mix(in srgb, var(--accent), black 15%);}
+label{font-size:.85rem;display:flex;align-items:center;gap:6px}
+input[type=range]{width:100px;accent-color:var(--accent)}
+canvas{border:2px solid var(--accent);border-radius:4px;max-width:100%}
+.palette-area{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center;max-width:800px}
+.pal-item{display:flex;align-items:center;gap:4px;font-size:.75rem;background:var(--bg-primary);border:1px solid var(--border-secondary);border-radius:6px;padding:4px 8px}
+.pal-swatch{width:20px;height:20px;border-radius:3px;border:1px solid var(--border-secondary)}

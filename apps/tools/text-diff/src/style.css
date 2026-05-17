@@ -1,0 +1,27 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh;padding:24px}
+h1{text-align:center;font-size:1.5rem;margin-bottom:16px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;max-width:1200px;margin-left:auto;margin-right:auto}
+.inputs textarea{background:#161b22;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:12px;font-family:'SF Mono',Consolas,monospace;font-size:.85rem;resize:vertical;min-height:150px;line-height:1.6}
+.inputs textarea:focus{outline:none;border-color:#58a6ff}
+.inputs label{font-size:.85rem;color:#8b949e;margin-bottom:4px;display:block}
+.actions{text-align:center;margin-bottom:20px}
+.btn{background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:10px 24px;font-size:.9rem;cursor:pointer}
+.btn:hover{background:#30363d}
+.btn.primary{background:#238636;color:#fff;border-color:#238636}
+.btn.primary:hover{background:#2ea043}
+.stats{text-align:center;font-size:.85rem;color:#8b949e;margin-bottom:16px}
+.stats span{font-weight:700}
+.diff-area{max-width:1200px;margin:0 auto;font-family:'SF Mono',Consolas,monospace;font-size:.85rem;border:1px solid #30363d;border-radius:8px;overflow:auto}
+.diff-line{display:flex;min-height:1.6em}
+.diff-line-num{width:50px;text-align:right;padding:2px 8px;color:#484f58;border-right:1px solid #30363d;flex-shrink:0;user-select:none}
+.diff-left,.diff-right{flex:1;padding:2px 12px;min-width:0;white-space:pre-wrap;word-break:break-all}
+.diff-left{border-right:1px solid #30363d}
+.diff-line.added{background:rgba(63,185,80,.1)}
+.diff-line.added .diff-right{background:rgba(63,185,80,.15)}
+.diff-line.removed{background:rgba(248,81,73,.1)}
+.diff-line.removed .diff-left{background:rgba(248,81,73,.15)}
+.diff-line.changed{background:rgba(210,153,34,.1)}
+.diff-line.changed .diff-left{background:rgba(248,81,73,.12)}
+.diff-line.changed .diff-right{background:rgba(63,185,80,.12)}
+@media(max-width:768px){.inputs{grid-template-columns:1fr}}

@@ -1,0 +1,18 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'STKaiti','KaiTi',serif;background:#1a1510;color:#d4c5a9;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px}
+h1{font-size:1.8rem;margin-bottom:8px;color:#c9a96e}
+.sub{font-size:.85rem;color:#8b7d5e;margin-bottom:24px}
+.jar{position:relative;width:180px;height:280px;cursor:pointer;margin-bottom:24px}
+.jar-body{width:180px;height:260px;background:linear-gradient(180deg,#5c4a2a,#3d2e15);border-radius:16px 16px 8px 8px;border:2px solid #7a6234;position:relative;overflow:hidden}
+.jar-body::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 30%,transparent 70%,rgba(255,255,255,.05))}
+.jar-neck{width:100px;height:30px;background:linear-gradient(180deg,#5c4a2a,#4a3a20);border:2px solid #7a6234;border-radius:8px 8px 0 0;margin:0 auto -2px;position:relative;z-index:1}
+.jar-label{text-align:center;margin-top:80px;font-size:1.2rem;color:#c9a96e}
+.stick{width:4px;height:80px;background:linear-gradient(#d4c5a9,#a08050);border-radius:2px;position:absolute;bottom:100px;left:50%;transform:translateX(-50%) rotate(0deg);transition:transform .8s cubic-bezier(.2,.8,.3,1)}
+.shaking .stick{transform:translateX(-50%) rotate(15deg)}
+.result{background:#241f14;border:2px solid #7a6234;border-radius:12px;padding:24px;max-width:500px;width:100%;text-align:center;animation:fadeIn .6s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.result .poem{font-size:1.3rem;line-height:2;margin-bottom:16px;color:#e6d5b0}
+.result .fortune{font-size:1.1rem;margin-bottom:8px}
+.result .fortune.great{color:#f0c040}.result .fortune.good{color:#7ec87e}.result .fortune.ok{color:#8b949e}.result .fortune.bad{color:#f85149}
+.result .hexagram{font-size:2rem;margin:12px 0}
+.hint{color:#8b7d5e;font-size:.85rem;margin-top:12px}

@@ -1,0 +1,20 @@
+{
+  "name": "app-hub",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "init": "bash scripts/init.sh",
+    "init:core": "bash scripts/init.sh --only-core",
+    "init:skip-clean": "bash scripts/init.sh --skip-clean",
+    "init:skip-build": "bash scripts/init.sh --skip-build",
+    "start": "cd hub-server && npm start",
+    "start:dev": "cd hub-server && npm run dev",
+    "build:all": "bash scripts/build-all.sh",
+    "build:sample": "bash scripts/build-all.sh sample 10",
+    "check:port": "bash scripts/check-port.sh",
+    "check:health": "bash scripts/health-check.sh",
+    "verify:deploy": "bash scripts/verify-deploy.sh"
+  },
+  "workspaces": ["packages/*", "apps/tools/*"]
+}

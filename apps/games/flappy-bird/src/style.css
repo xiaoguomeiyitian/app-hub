@@ -1,0 +1,30 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,sans-serif;background:#1a1a2e;color:#fff;min-height:100vh;display:flex;justify-content:center;padding:8px;user-select:none;}
+#app{width:100%;max-width:350px;}
+
+.fl-wrapper{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.fl-header{display:flex;justify-content:space-between;width:100%;padding:8px;background:rgba(0,0,0,.3);border-radius:8px;align-items:center;flex-wrap:wrap;gap:6px;}
+.fl-title{font-size:1.1rem;font-weight:700;}
+.fl-scores{display:flex;gap:10px;font-size:0.85rem;}
+.fl-best{color:#f1c40f;}
+.fl-btn{padding:6px 12px;border:none;border-radius:6px;background:#f1c40f;color:#000;cursor:pointer;font-weight:700;font-size:0.8rem;}
+.fl-btn:hover{filter:brightness(1.1);}
+.fl-btn.primary{background:#2ecc71;color:#fff;}
+.fl-canvas-wrap{position:relative;}
+#fl-canvas{display:block;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+.fl-hints{font-size:.75rem;color:#888;}
+
+/* 覆盖层 */
+.fl-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.5);border-radius:6px;}
+.fl-start{text-align:center;padding:20px;}
+.fl-start h2{font-size:1.8rem;margin-bottom:12px;}
+.fl-start p{font-size:1rem;margin-bottom:6px;}
+.fl-best-info{color:#f1c40f;font-weight:600;}
+
+.fl-over{text-align:center;padding:20px;}
+.fl-over h2{font-size:1.5rem;margin-bottom:16px;}
+.fl-over-stats{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:16px;}
+.fl-over-score,.fl-over-best{font-size:2rem;font-weight:700;color:#f1c40f;}
+.fl-over-label{font-size:0.75rem;color:#aaa;}
+.back-to-lobby { position: fixed; top: 10px; left: 10px; z-index: 100; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.15); }
+.back-to-lobby:hover { background: rgba(255,255,255,0.15); }

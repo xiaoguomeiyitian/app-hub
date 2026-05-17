@@ -1,0 +1,151 @@
+📦 路由已注册：/api/admin
+✅ 项目 "admin" 加载成功
+📦 路由已注册：/api/auth
+✅ 项目 "auth" 加载成功
+📦 路由已注册：/api/basketball
+🔌 WebSocket 已注册: /api/basketball/websocket
+🔌 WebSocket 已注册：/api/basketball/websocket/
+✅ 项目 "basketball" 加载成功
+📦 路由已注册：/api/battleship
+🔌 WebSocket 已注册: /api/battleship/websocket
+🔌 WebSocket 已注册：/api/battleship/websocket/
+✅ 项目 "battleship" 加载成功
+📦 路由已注册：/api/bejeweled
+🔌 WebSocket 已注册: /api/bejeweled/websocket
+🔌 WebSocket 已注册：/api/bejeweled/websocket/
+✅ 项目 "bejeweled" 加载成功
+📦 路由已注册：/api/blackjack
+🔌 WebSocket 已注册: /api/blackjack/websocket
+🔌 WebSocket 已注册：/api/blackjack/websocket/
+✅ 项目 "blackjack" 加载成功
+📦 路由已注册：/api/bomberman
+🔌 WebSocket 已注册: /api/bomberman/websocket
+🔌 WebSocket 已注册：/api/bomberman/websocket/
+✅ 项目 "bomberman" 加载成功
+📦 路由已注册：/api/checkers
+🔌 WebSocket 已注册: /api/checkers/websocket
+🔌 WebSocket 已注册：/api/checkers/websocket/
+✅ 项目 "checkers" 加载成功
+📦 路由已注册：/api/connect4
+🔌 WebSocket 已注册: /api/connect4/websocket
+🔌 WebSocket 已注册：/api/connect4/websocket/
+✅ 项目 "connect4" 加载成功
+📦 路由已注册：/api/darts
+🔌 WebSocket 已注册: /api/darts/websocket
+🔌 WebSocket 已注册：/api/darts/websocket/
+✅ 项目 "darts" 加载成功
+📦 路由已注册：/api/doudizhu
+🔌 WebSocket 已注册: /api/doudizhu/websocket
+🔌 WebSocket 已注册：/api/doudizhu/websocket/
+✅ 项目 "doudizhu" 加载成功
+📦 路由已注册：/api/flappy-bird
+🔌 WebSocket 已注册: /api/flappy-bird/websocket
+🔌 WebSocket 已注册：/api/flappy-bird/websocket/
+✅ 项目 "flappy-bird" 加载成功
+📦 路由已注册：/api/football
+🔌 WebSocket 已注册: /api/football/websocket
+🔌 WebSocket 已注册：/api/football/websocket/
+✅ 项目 "football" 加载成功
+📦 路由已注册：/api/game-2048-mp
+🔌 [game-2048-mp] WebSocket 已注册: /api/game-2048-mp/websocket
+🔌 WebSocket 已注册：/api/game-2048-mp/websocket/
+✅ 项目 "game-2048-mp" 加载成功
+📦 路由已注册：/api/go-game
+🔌 WebSocket 已注册: /api/go-game/websocket
+🔌 WebSocket 已注册：/api/go-game/websocket/
+✅ 项目 "go-game" 加载成功
+📦 路由已注册：/api/gomoku-mp
+🔌 [gomoku-mp] WebSocket 已注册: /api/gomoku-mp/websocket
+🔌 WebSocket 已注册：/api/gomoku-mp/websocket/
+✅ 项目 "gomoku-mp" 加载成功
+📦 路由已注册：/api/guandan-mp
+🔌 [guandan-mp] WebSocket 已注册: /api/guandan-mp/websocket
+🔌 WebSocket 已注册：/api/guandan-mp/websocket/
+✅ 项目 "guandan-mp" 加载成功
+📦 路由已注册：/api/guestbook
+🔌 WebSocket 已注册：/api/guestbook/websocket/
+✅ 项目 "guestbook" 加载成功
+📦 路由已注册：/api/mahjong
+🔌 WebSocket 已注册: /api/mahjong/websocket
+🔌 WebSocket 已注册：/api/mahjong/websocket/
+✅ 项目 "mahjong" 加载成功
+📦 路由已注册：/api/minesweeper
+🔌 WebSocket 已注册: /api/minesweeper/websocket
+🔌 WebSocket 已注册：/api/minesweeper/websocket/
+✅ 项目 "minesweeper" 加载成功
+📦 路由已注册：/api/pacman
+🔌 WebSocket 已注册: /api/pacman/websocket
+🔌 WebSocket 已注册：/api/pacman/websocket/
+✅ 项目 "pacman" 加载成功
+📦 路由已注册：/api/paodekuai
+🔌 WebSocket 已注册: /api/paodekuai/websocket
+🔌 WebSocket 已注册：/api/paodekuai/websocket/
+✅ 项目 "paodekuai" 加载成功
+📦 路由已注册：/api/pastebin
+✅ 项目 "pastebin" 加载成功
+📦 路由已注册：/api/pinball
+🔌 WebSocket 已注册: /api/pinball/websocket
+🔌 WebSocket 已注册：/api/pinball/websocket/
+✅ 项目 "pinball" 加载成功
+📦 路由已注册：/api/platform
+✅ 项目 "platform" 加载成功
+📦 路由已注册：/api/pong
+🔌 WebSocket 已注册: /api/pong/websocket
+🔌 WebSocket 已注册：/api/pong/websocket/
+✅ 项目 "pong" 加载成功
+📦 路由已注册：/api/racing
+🔌 WebSocket 已注册: /api/racing/websocket
+🔌 WebSocket 已注册：/api/racing/websocket/
+✅ 项目 "racing" 加载成功
+📦 路由已注册：/api/reversi
+🔌 WebSocket 已注册: /api/reversi/websocket
+🔌 WebSocket 已注册：/api/reversi/websocket/
+✅ 项目 "reversi" 加载成功
+📦 路由已注册：/api/scrabble
+🔌 WebSocket 已注册: /api/scrabble/websocket
+🔌 WebSocket 已注册：/api/scrabble/websocket/
+✅ 项目 "scrabble" 加载成功
+📦 路由已注册：/api/snake-mp
+🔌 WebSocket 已注册：/api/snake-mp/websocket/
+✅ 项目 "snake-mp" 加载成功
+📦 路由已注册：/api/space-shooter
+🔌 WebSocket 已注册: /api/space-shooter/websocket
+🔌 WebSocket 已注册：/api/space-shooter/websocket/
+✅ 项目 "space-shooter" 加载成功
+📦 路由已注册：/api/spyfall
+🔌 WebSocket 已注册: /api/spyfall/websocket
+🔌 WebSocket 已注册：/api/spyfall/websocket/
+✅ 项目 "spyfall" 加载成功
+📦 路由已注册：/api/sudoku
+🔌 WebSocket 已注册: /api/sudoku/websocket
+🔌 WebSocket 已注册：/api/sudoku/websocket/
+✅ 项目 "sudoku" 加载成功
+📦 路由已注册：/api/tetris-mp
+🔌 [tetris-mp] WebSocket 已注册: /api/tetris-mp/websocket
+🔌 WebSocket 已注册：/api/tetris-mp/websocket/
+✅ 项目 "tetris-mp" 加载成功
+📦 路由已注册：/api/typing-speed
+🔌 WebSocket 已注册: /api/typing-speed/websocket
+🔌 WebSocket 已注册：/api/typing-speed/websocket/
+✅ 项目 "typing-speed" 加载成功
+📦 路由已注册：/api/url-shortener
+✅ 项目 "url-shortener" 加载成功
+📦 路由已注册：/api/werewolf
+🔌 WebSocket 已注册: /api/werewolf/websocket
+🔌 WebSocket 已注册：/api/werewolf/websocket/
+✅ 项目 "werewolf" 加载成功
+📦 路由已注册：/api/wordle
+🔌 WebSocket 已注册: /api/wordle/websocket
+🔌 WebSocket 已注册：/api/wordle/websocket/
+✅ 项目 "wordle" 加载成功
+📦 路由已注册：/api/xiangqi
+🔌 [xiangqi] 原生 WebSocket 已注册: /api/xiangqi/websocket
+🔌 WebSocket 已注册：/api/xiangqi/websocket/
+✅ 项目 "xiangqi" 加载成功
+🔧 统一入口服务运行在 0.0.0.0:20008
+   首页: https://97.383636.xyz/openclaw/20008/
+   健康检查: https://97.383636.xyz/openclaw/20008/health
+   项目列表: https://97.383636.xyz/openclaw/20008/api
+   重载接口: POST https://97.383636.xyz/openclaw/20008/api/_rescan
+   已加载项目: admin, auth, basketball, battleship, bejeweled, blackjack, bomberman, checkers, connect4, darts, doudizhu, flappy-bird, football, game-2048-mp, go-game, gomoku-mp, guandan-mp, guestbook, mahjong, minesweeper, pacman, paodekuai, pastebin, pinball, platform, pong, racing, reversi, scrabble, snake-mp, space-shooter, spyfall, sudoku, tetris-mp, typing-speed, url-shortener, werewolf, wordle, xiangqi
+👁️  项目目录自动轮询已关闭，改为手动 /api/_rescan 触发

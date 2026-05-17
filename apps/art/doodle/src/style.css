@@ -1,0 +1,12 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:16px}
+h1{font-size:1.3rem;margin-bottom:12px}
+.toolbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
+.tool-btn{background:#16213e;color:#e6edf3;border:1px solid #0f3460;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:.85rem;transition:all .15s}
+.tool-btn:hover{background:#0f3460}
+.tool-btn.active{background:#e94560;border-color:#e94560;color:#fff}
+.color-pick{width:36px;height:36px;border:none;border-radius:8px;cursor:pointer;background:none}
+.size-slider{width:80px;accent-color:#e94560}
+label{font-size:.8rem;color:#8b949e}
+canvas{background:var(--bg-primary);border-radius:8px;cursor:crosshair;box-shadow:0 4px 20px rgba(0,0,0,.3);touch-action:none
+.actions{display:flex;gap:8px;margin-top:12px}

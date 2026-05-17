@@ -1,0 +1,355 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for main.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="index.html">All files</a> main.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">53.7% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>29/54</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">43.75% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>21/48</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">42.85% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>6/14</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">79.41% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>27/34</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line medium'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import './style.css';
+interface Record { date: string; bmi: number; weight: number; height: number; }
+const STORAGE = 'bmi-calculator';
+function load(): Record[] { try { return JSON.parse(localStorage.getItem(STORAGE) || '[]'); } catch { <span class="cstat-no" title="statement not covered" >return []; } }</span>
+function <span class="fstat-no" title="function not covered" >save(r</span>: Record[]): void { <span class="cstat-no" title="statement not covered" >localStorage.setItem(STORAGE, JSON.stringify(r)); }</span>
+&nbsp;
+let records = load();
+let height = 170;
+let weight = 70;
+let unit: 'metric' | 'imperial' = 'metric';
+&nbsp;
+function calcBMI(h: number, w: number): number {
+  const hm = unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >h * 0.0254 : h</span> / 100;
+  const wm = unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >w * 0.453592 : w</span>;
+  return wm / (hm * hm);
+}
+&nbsp;
+function getCategory(bmi: number): { label: string; color: string; range: string } {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (bmi &lt; 18.5) <span class="cstat-no" title="statement not covered" >return { label: '偏瘦', color: '#58a6ff', range: '&lt; 18.5' };</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (bmi &lt; 24) <span class="cstat-no" title="statement not covered" >return { label: '正常', color: '#3fb950', range: '18.5 - 24' };</span>
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (bmi &lt; 28) return { label: '超重', color: '#d29922', range: '24 - 28' };
+<span class="cstat-no" title="statement not covered" >  return { label: '肥胖', color: '#f85149', range: '≥ 28' };</span>
+}
+&nbsp;
+function render(): void {
+  const bmi = calcBMI(height, weight);
+  const cat = getCategory(bmi);
+  const minW = (unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >height * 0.0254 : h</span>eight / 100) ** 2 * 18.5 * (unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >2.20462 : 1</span>);
+  const maxW = (unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >height * 0.0254 : h</span>eight / 100) ** 2 * 24 * (unit === 'imperial' ? <span class="branch-0 cbranch-no" title="branch not covered" >2.20462 : 1</span>);
+  const app = document.getElementById('app')!;
+&nbsp;
+  app.innerHTML = `
+  &lt;div class="app"&gt;
+    &lt;header class="header"&gt;&lt;span class="logo"&gt;⚖️&lt;/span&gt;&lt;span class="title"&gt;BMI Calculator&lt;/span&gt;&lt;/header&gt;
+    &lt;main class="main"&gt;
+      &lt;div class="unit-toggle"&gt;
+        &lt;button class="unit-btn ${unit==='metric'?'active':<span class="branch-1 cbranch-no" title="branch not covered" >''}"</span> data-unit="metric"&gt;公制 (cm/kg)&lt;/button&gt;
+        &lt;button class="unit-btn ${unit==='imperial'?<span class="branch-0 cbranch-no" title="branch not covered" >'active':'</span>'}" data-unit="imperial"&gt;英制 (in/lb)&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="inputs"&gt;
+        &lt;div class="input-group"&gt;
+          &lt;label&gt;身高 (${unit==='metric'?'cm':<span class="branch-1 cbranch-no" title="branch not covered" >'in'})</span>&lt;/label&gt;
+          &lt;input type="range" id="height-slider" min="${unit==='metric'?100:<span class="branch-1 cbranch-no" title="branch not covered" >40}"</span> max="${unit==='metric'?220:<span class="branch-1 cbranch-no" title="branch not covered" >87}"</span> value="${height}" class="slider" /&gt;
+          &lt;input type="number" id="height-input" value="${height}" class="num-input" /&gt;
+        &lt;/div&gt;
+        &lt;div class="input-group"&gt;
+          &lt;label&gt;体重 (${unit==='metric'?'kg':<span class="branch-1 cbranch-no" title="branch not covered" >'lb'})</span>&lt;/label&gt;
+          &lt;input type="range" id="weight-slider" min="${unit==='metric'?30:<span class="branch-1 cbranch-no" title="branch not covered" >66}"</span> max="${unit==='metric'?200:<span class="branch-1 cbranch-no" title="branch not covered" >440}"</span> value="${weight}" class="slider" /&gt;
+          &lt;input type="number" id="weight-input" value="${weight}" class="num-input" /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="result" style="border-color:${cat.color}"&gt;
+        &lt;div class="bmi-value" style="color:${cat.color}"&gt;${bmi.toFixed(1)}&lt;/div&gt;
+        &lt;div class="bmi-category" style="color:${cat.color}"&gt;${cat.label}&lt;/div&gt;
+        &lt;div class="bmi-range"&gt;正常范围: ${minW.toFixed(1)} ~ ${maxW.toFixed(1)} ${unit==='metric'?'kg':<span class="branch-1 cbranch-no" title="branch not covered" >'lb'}&lt;</span>/div&gt;
+      &lt;/div&gt;
+      &lt;div class="gauge"&gt;
+        &lt;div class="gauge-bg"&gt;&lt;/div&gt;
+        &lt;div class="gauge-fill" style="width:${Math.min(bmi / 40 * 100, 100)}%;background:${cat.color}"&gt;&lt;/div&gt;
+        &lt;div class="gauge-labels"&gt;&lt;span&gt;15&lt;/span&gt;&lt;span&gt;18.5&lt;/span&gt;&lt;span&gt;24&lt;/span&gt;&lt;span&gt;28&lt;/span&gt;&lt;span&gt;40&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="btn-save" id="save-btn"&gt;💾 Save Record&lt;/button&gt;
+      ${records.length &gt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >`</span>
+        &lt;div class="history"&gt;
+          &lt;h4&gt;History&lt;/h4&gt;
+          ${records.slice(-10).reverse().<span class="fstat-no" title="function not covered" >map(r</span> =&gt; <span class="cstat-no" title="statement not covered" >`&lt;div class="hist-item"&gt;&lt;span&gt;${r.date}&lt;/span&gt;&lt;span&gt;BMI: ${r.bmi.toFixed(1)}&lt;/span&gt;&lt;span&gt;${r.weight}kg&lt;/span&gt;&lt;/div&gt;`).</span>join('')}
+        &lt;/div&gt;
+      ` : ''}
+    &lt;/main&gt;
+  &lt;/div&gt;`;
+  bindEvents();
+}
+&nbsp;
+function bindEvents(): void {
+  document.querySelectorAll('.unit-btn').forEach(btn =&gt; {
+    btn.addEventListener(<span class="fstat-no" title="function not covered" >'click', () =&gt; {</span> <span class="cstat-no" title="statement not covered" >unit = (btn as HTMLElement).dataset.unit as any; <span class="cstat-no" title="statement not covered" >h</span>eight = unit === 'metric' ? 170 : 67; <span class="cstat-no" title="statement not covered" >w</span>eight = unit === 'metric' ? 70 : 154; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  });
+  document.getElementById('height-slider')?.addEventListener(<span class="fstat-no" title="function not covered" >'input', (e</span>) =&gt; { <span class="cstat-no" title="statement not covered" >height = +(e.target as HTMLInputElement).value; (<span class="cstat-no" title="statement not covered" ></span>document.getElementById('height-input') as HTMLInputElement).value = String(height); <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('weight-slider')?.addEventListener(<span class="fstat-no" title="function not covered" >'input', (e</span>) =&gt; { <span class="cstat-no" title="statement not covered" >weight = +(e.target as HTMLInputElement).value; (<span class="cstat-no" title="statement not covered" ></span>document.getElementById('weight-input') as HTMLInputElement).value = String(weight); <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('height-input')?.addEventListener(<span class="fstat-no" title="function not covered" >'change', (e</span>) =&gt; { <span class="cstat-no" title="statement not covered" >height = +(e.target as HTMLInputElement).value; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('weight-input')?.addEventListener(<span class="fstat-no" title="function not covered" >'change', (e</span>) =&gt; { <span class="cstat-no" title="statement not covered" >weight = +(e.target as HTMLInputElement).value; <span class="cstat-no" title="statement not covered" >r</span>ender(); });</span>
+  document.getElementById('save-btn')?.addEventListener(<span class="fstat-no" title="function not covered" >'click', () =&gt; {</span>
+    const bmi = <span class="cstat-no" title="statement not covered" >calcBMI(height, weight);</span>
+    const wm = <span class="cstat-no" title="statement not covered" >unit === 'imperial' ? weight * 0.453592 : weight;</span>
+<span class="cstat-no" title="statement not covered" >    records.push({ date: new Date().toISOString().slice(0, 10), bmi, weight: wm, height: unit === 'imperial' ? height * 2.54 : height });</span>
+<span class="cstat-no" title="statement not covered" >    save(records); <span class="cstat-no" title="statement not covered" >r</span>ender();</span>
+  });
+}
+&nbsp;
+render();
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-05-02T15:44:19.968Z
+            </div>
+        <script src="prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
+    </body>
+</html>
+    

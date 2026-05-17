@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>分形浏览器</title><style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden;background:#000;font-family:sans-serif}canvas{display:block;cursor:grab}canvas:active{cursor:grabbing}#ui{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}.btn{background:rgba(255,255,255,.12);color:#e6edf3;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.8rem;backdrop-filter:blur(4px)}.btn:hover{background:rgba(255,255,255,.25)}.btn.active{background:rgba(88,166,255,.3);border-color:#58a6ff}.info{position:fixed;bottom:16px;left:16px;color:rgba(255,255,255,.4);font-size:.7rem;z-index:10}</style></head><body>
+<div id="ui">
+  <h1 style="color:#e6edf3;font-size:1rem;text-shadow:0 2px 8px rgba(0,0,0,.8)">🔮 分形浏览器</h1>
+  <button class="btn active" data-f="mandelbrot">Mandelbrot</button>
+  <button class="btn" data-f="julia">Julia</button>
+  <button class="btn" data-p="0">经典</button>
+  <button class="btn" data-p="1">火焰</button>
+  <button class="btn" data-p="2">冰蓝</button>
+  <button class="btn" data-p="3">彩虹</button>
+  <button class="btn" id="resetBtn">🔄 重置</button>
+</div>
+<canvas id="c"></canvas>
+<div class="info" id="info">滚轮缩放 | 拖拽平移 | 缩放: 1x</div>
+<script type="module" src="./src/main.ts"></script>
+</body></html>

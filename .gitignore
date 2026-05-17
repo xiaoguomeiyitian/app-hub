@@ -1,0 +1,10 @@
+# 忽略构建产物和静态部署目录
+static/
+node_modules/
+dist/
+data/
+reports/
+*.db
+*.log
+server.log
+*.backup

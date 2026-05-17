@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>生成式氛围音乐</title><style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden;font-family:sans-serif;background:var(--bg-primary);color:var(--text-primary)}#ui{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;background:var(--bg-secondary);padding:8px 12px;border-radius:8px;backdrop-filter:blur(8px);border:1px solid rgba(128,128,128,.2)}h1{color:var(--text-primary);font-size:1rem;margin-right:8px}.btn{background:rgba(128,128,128,.15);color:var(--text-primary);border:1px solid rgba(128,128,128,.3);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.8rem;backdrop-filter:blur(4px);transition:all .15s}.btn:hover{background:rgba(128,128,128,.25)}.btn.active{background:rgba(88,166,255,.3);border-color:var(--accent)}.params{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:16px;align-items:center;background:var(--bg-secondary);padding:8px 16px;border-radius:8px;backdrop-filter:blur(4px);border:1px solid rgba(128,128,128,.2)}.params label{color:var(--text-secondary);font-size:.7rem;display:flex;align-items:center;gap:4px}.params input[type=range]{width:80px;accent-color:var(--accent)}.preset-controls{display:flex;gap:4px;align-items:center}.preset-controls select,.preset-controls input{border:1px solid rgba(128,128,128,.3);border-radius:4px;padding:4px 8px;font-size:.75rem;background:rgba(128,128,128,.1);color:var(--text-primary)}.preset-controls input{width:100px}@media (max-width: 768px) { #ui { flex-direction: column; top: 8px; } .params { flex-wrap: wrap; justify-content: center; bottom: 8px; } }canvas{display:block}#ui{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}h1{color:#e6edf3;font-size:1rem;text-shadow:0 2px 8px rgba(0,0,0,.8);margin-right:8px}.btn{background:rgba(255,255,255,.1);color:#e6edf3;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.8rem;backdrop-filter:blur(4px);transition:all .15s}.btn:hover{background:rgba(255,255,255,.25)}.btn.active{background:rgba(88,166,255,.3);border-color:#58a6ff}.params{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:16px;align-items:center;background:rgba(0,0,0,.5);padding:8px 16px;border-radius:8px;backdrop-filter:blur(4px)}.params label{color:rgba(255,255,255,.5);font-size:.7rem;display:flex;align-items:center;gap:4px}.params input[type=range]{width:80px;accent-color:#58a6ff}</style></head><body>
+<div id="ui">
+  <h1>🎵 氛围音乐</h1>
+  <button class="btn" id="playBtn">▶️ 播放</button>
+  <button class="btn" id="recordBtn">🎙️ 录制30s</button>
+  <button class="btn" id="exportBtn">💾 导出WAV</button>
+  <button class="btn active" data-s="forest">🌲 森林</button>
+  <button class="btn" data-s="ocean">🌊 海洋</button>
+  <button class="btn" data-s="space">🌌 星空</button>
+  <span class="preset-controls">
+    <select id="presetSelect"><option value="">加载预设</option></select>
+    <input id="presetName" placeholder="预设名称"/>
+    <button class="btn" id="savePresetBtn">保存预设</button>
+  </span>
+</div>
+<div class="params">
+  <label>音量 <input type="range" id="vol" min="0" max="100" value="40"/></label>
+  <label>密度 <input type="range" id="density" min="1" max="10" value="5"/></label>
+  <label>调性 <input type="range" id="tune" min="0" max="100" value="50"/></label>
+</div>
+<canvas id="c"></canvas>
+<script type="module" src="./src/main.ts"></script>
+</body></html>

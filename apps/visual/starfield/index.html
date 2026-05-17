@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>星空巡礼</title><style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden;background:#000;font-family:sans-serif}canvas{display:block}#ui{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center}.btn{background:rgba(255,255,255,.1);color:#e6edf3;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.8rem;backdrop-filter:blur(4px)}.btn:hover{background:rgba(255,255,255,.25)}h1{color:#e6edf3;font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,.8)}.hint{color:rgba(255,255,255,.3);font-size:.7rem;margin-left:8px}.speed-display{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:.75rem}</style></head><body>
+<div id="ui"><h1>✨ 星空巡礼</h1><button class="btn" id="saveBtn">📸 截图</button><span class="hint">滚轮加速/减速</span></div>
+<canvas id="c"></canvas>
+<div class="speed-display" id="speedDisp">速度: 1x</div>
+<script type="module" src="./src/main.ts"></script>
+</body></html>

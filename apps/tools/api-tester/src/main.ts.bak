@@ -1,0 +1,459 @@
+import './style.css';
+
+interface Header { key: string; value: string; enabled: boolean; }
+interface HistoryItem {
+  id: string;
+  method: string;
+  url: string;
+  headers: Header[];
+  body: string;
+  status: number;
+  statusText: string;
+  time: number;
+  responseSize: number;
+  timestamp: number;
+  favorite: boolean;
+}
+interface EnvVar { key: string; value: string; }
+
+const STORAGE_KEY = 'api-tester';
+const METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'];
+
+function load(): { history: HistoryItem[]; envs: EnvVar[] } {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return { history: [], envs: [] }; }
+}
+function save(data: { history: HistoryItem[]; envs: EnvVar[] }): void {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function replaceEnvVars(str: string, envs: EnvVar[]): string {
+  return str.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    const v = envs.find(e => e.key === key);
+    return v ? v.value : `{{${key}}}`;
+  });
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+function syntaxHighlightJSON(json: string): string {
+  return json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, (match) => {
+      let cls = 'json-number';
+      if (/^"/.test(match)) {
+        cls = /:$/.test(match) ? 'json-key' : 'json-string';
+      } else if (/true|false/.test(match)) cls = 'json-boolean';
+      else if (/null/.test(match)) cls = 'json-null';
+      return `<span class="${cls}">${match}</span>`;
+    });
+}
+
+function parseCurl(curl: string): { method: string; url: string; headers: Header[]; body: string } {
+  const result = { method: 'GET', url: '', headers: [] as Header[], body: '' };
+  curl = curl.trim().replace(/^curl\s+/, '');
+  // Extract method
+  const methodMatch = curl.match(/-X\s+(\w+)/);
+  if (methodMatch) result.method = methodMatch[1].toUpperCase();
+  // Extract headers
+  const headerRegex = /-H\s+['"]([^'"]+)['"]/g;
+  let hm;
+  while ((hm = headerRegex.exec(curl)) !== null) {
+    const [key, ...rest] = hm[1].split(':');
+    result.headers.push({ key: key.trim(), value: rest.join(':').trim(), enabled: true });
+  }
+  // Extract body
+  const bodyMatch = curl.match(/(-d|--data|--data-raw)\s+['"]([^'"]+)['"]/);
+  if (bodyMatch) result.body = bodyMatch[2];
+  // Extract URL
+  const urlMatch = curl.match(/https?:\/\/[^\s'"]+/);
+  if (urlMatch) result.url = urlMatch[0];
+  return result;
+}
+
+let state = {
+  method: 'GET',
+  url: '',
+  headers: [{ key: 'Content-Type', value: 'application/json', enabled: true }] as Header[],
+  body: '',
+  activeTab: 'headers' as 'headers' | 'body' | 'ws',
+  responseTab: 'body' as 'body' | 'headers',
+  response: null as null | { status: number; statusText: string; headers: Record<string, string>; body: string; time: number; size: number },
+  loading: false,
+  error: '',
+  showHistory: false,
+  showEnvs: false,
+  proxyMode: false, // 使用 hub-server 代理
+  graphqlMode: false, // GraphQL 请求（raw）
+};
+
+// WebSocket 状态
+interface WsState {
+  url: string;
+  connected: boolean;
+  log: string[];
+  sendText: string;
+  ws: WebSocket | null;
+}
+let wsState: WsState = { url: '', connected: false, log: [], sendText: '', ws: null };
+
+const data = load();
+
+function render(): void {
+  const app = document.getElementById('app')!;
+  app.innerHTML = `
+  <div class="app">
+    <header class="header">
+      <div class="header-left">
+        <span class="logo">📡</span>
+        <span class="title">API Tester</span>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-sm" id="env-btn" title="Environment Variables">🔧 Env</button>
+        <button class="btn btn-sm" id="history-btn" title="History">📋 History (${data.history.length})</button>
+        <button class="btn btn-sm" id="curl-btn" title="Import cURL">📥 cURL</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Request Bar -->
+      <div class="request-bar">
+        <select id="method" class="method-select">
+          ${METHODS.map(m => `<option value="${m}" ${m === state.method ? 'selected' : ''} class="method-${m.toLowerCase()}">${m}</option>`).join('')}
+        </select>
+        <input type="text" id="url" class="url-input" placeholder="Enter request URL (use {{var}} for env vars)" value="${escapeAttr(state.url)}" />
+        <label title="Proxy through hub-server"><input type="checkbox" id="proxy-mode" ${state.proxyMode ? 'checked' : ''} /> Proxy</label>
+        <label title="Send as GraphQL raw"><input type="checkbox" id="graphql-mode" ${state.graphqlMode ? 'checked' : ''} /> GraphQL</label>
+        <button id="send-btn" class="send-btn ${state.loading ? 'loading' : ''}">${state.loading ? '⏳' : '▶ Send'}</button>
+      </div>
+
+      <!-- Request Tabs -->
+      <div class="section">
+        <div class="tabs">
+          <button class="tab ${state.activeTab === 'headers' ? 'active' : ''}" data-tab="headers">Headers (${state.headers.filter(h => h.enabled).length})</button>
+          <button class="tab ${state.activeTab === 'body' ? 'active' : ''}" data-tab="body">Body</button>
+          <button class="tab ${state.activeTab === 'ws' ? 'active' : ''}" data-tab="ws">WebSocket</button>
+        </div>
+        <div class="tab-content">
+          ${state.activeTab === 'headers' ? `
+            <div class="headers-editor">
+              ${state.headers.map((h, i) => `
+                <div class="header-row">
+                  <input type="checkbox" ${h.enabled ? 'checked' : ''} data-action="toggle-header" data-index="${i}" />
+                  <input type="text" placeholder="Key" value="${escapeAttr(h.key)}" data-action="header-key" data-index="${i}" />
+                  <input type="text" placeholder="Value" value="${escapeAttr(h.value)}" data-action="header-value" data-index="${i}" />
+                  <button class="btn-icon-sm" data-action="remove-header" data-index="${i}">✕</button>
+                </div>
+              `).join('')}
+              <button class="btn btn-sm" id="add-header">+ Add Header</button>
+            </div>
+          ` : state.activeTab === 'ws' ? `
+            <div class="ws-section">
+              <div class="ws-row">
+                <input type="text" id="ws-url" class="url-input" placeholder="ws:// or wss://" value="${escapeAttr(wsState.url)}" ${wsState.connected ? 'disabled' : ''} />
+                <button id="ws-connect-btn" class="btn">${wsState.connected ? 'Disconnect' : 'Connect'}</button>
+              </div>
+              <div class="ws-log" style="border:1px solid var(--accent); height:200px; overflow:auto; margin:8px 0; padding:4px; background:var(--bg-secondary);">
+                ${wsState.log.map(line => `<div>${escapeHtml(line)}</div>`).join('')}
+              </div>
+              <div class="ws-send">
+                <textarea id="ws-send-text" class="body-editor" placeholder="Message" style="height:80px">${escapeHtml(wsState.sendText)}</textarea>
+                <button id="ws-send-btn" class="btn" ${!wsState.connected ? 'disabled' : ''}>Send</button>
+              </div>
+            </div>
+          ` : `
+            <textarea id="body-editor" class="body-editor" placeholder="Request body (JSON, form data, etc.)">${escapeHtml(state.body)}</textarea>
+          `}
+        </div>
+      </div>
+
+      <!-- Response -->
+      <div class="section response-section">
+        <div class="response-header">
+          <span class="response-title">Response</span>
+          ${state.response ? `
+            <div class="response-meta">
+              <span class="status-badge status-${Math.floor(state.response.status / 100)}xx">${state.response.status} ${state.response.statusText}</span>
+              <span class="meta-item">⏱ ${state.response.time}ms</span>
+              <span class="meta-item">📦 ${formatBytes(state.response.size)}</span>
+            </div>
+          ` : state.error ? `<span class="error-text">${escapeHtml(state.error)}</span>` : '<span class="text-muted">Send a request to see the response</span>'}
+        </div>
+        ${state.response ? `
+          <div class="tabs">
+            <button class="tab ${state.responseTab === 'body' ? 'active' : ''}" data-resp-tab="body">Body</button>
+            <button class="tab ${state.responseTab === 'headers' ? 'active' : ''}" data-resp-tab="headers">Headers</button>
+          </div>
+          <div class="tab-content response-body">
+            ${state.responseTab === 'body' ? `
+              <pre class="code-block">${syntaxHighlightJSON(state.response.body)}</pre>
+            ` : `
+              <div class="resp-headers">
+                ${Object.entries(state.response.headers).map(([k, v]) => `<div class="resp-header-row"><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</div>`).join('')}
+              </div>
+            `}
+          </div>
+        ` : ''}
+      </div>
+    </main>
+
+    <!-- History Panel -->
+    <div class="panel ${state.showHistory ? 'open' : ''}" id="history-panel">
+      <div class="panel-header">
+        <span>📋 History</span>
+        <button class="btn-icon-sm" id="close-history">✕</button>
+      </div>
+      <div class="panel-body">
+        ${data.history.length === 0 ? '<p class="text-muted">No history yet</p>' : ''}
+        ${data.history.slice().reverse().map(h => `
+          <div class="history-item" data-id="${h.id}">
+            <div class="history-top">
+              <span class="method-badge method-${h.method.toLowerCase()}">${h.method}</span>
+              <span class="status-badge status-${Math.floor(h.status / 100)}xx">${h.status}</span>
+              <span class="history-time">${h.time}ms</span>
+              <button class="btn-icon-sm fav-btn ${h.favorite ? 'fav' : ''}" data-action="toggle-fav" data-id="${h.id}">${h.favorite ? '⭐' : '☆'}</button>
+              <button class="btn-icon-sm" data-action="delete-history" data-id="${h.id}">✕</button>
+            </div>
+            <div class="history-url">${escapeHtml(h.url)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Env Panel -->
+    <div class="panel ${state.showEnvs ? 'open' : ''}" id="env-panel">
+      <div class="panel-header">
+        <span>🔧 Environment Variables</span>
+        <button class="btn-icon-sm" id="close-env">✕</button>
+      </div>
+      <div class="panel-body">
+        <p class="text-muted" style="margin-bottom:8px">Use {{varName}} in URL, headers, or body</p>
+        ${data.envs.map((e, i) => `
+          <div class="env-row">
+            <input type="text" placeholder="Variable" value="${escapeAttr(e.key)}" data-action="env-key" data-index="${i}" />
+            <input type="text" placeholder="Value" value="${escapeAttr(e.value)}" data-action="env-value" data-index="${i}" />
+            <button class="btn-icon-sm" data-action="remove-env" data-index="${i}">✕</button>
+          </div>
+        `).join('')}
+        <button class="btn btn-sm" id="add-env">+ Add Variable</button>
+      </div>
+    </div>
+  </div>`;
+
+  bindEvents();
+}
+
+function escapeHtml(s: string): string { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function escapeAttr(s: string): string { return s.replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+function bindEvents(): void {
+  document.getElementById('method')!.addEventListener('change', (e) => { state.method = (e.target as HTMLSelectElement).value; });
+  document.getElementById('url')!.addEventListener('input', (e) => { state.url = (e.target as HTMLInputElement).value; });
+  document.getElementById('send-btn')!.addEventListener('click', sendRequest);
+  document.getElementById('add-header')!.addEventListener('click', () => { state.headers.push({ key: '', value: '', enabled: true }); render(); });
+  document.getElementById('history-btn')!.addEventListener('click', () => { state.showHistory = !state.showHistory; state.showEnvs = false; render(); });
+  document.getElementById('env-btn')!.addEventListener('click', () => { state.showEnvs = !state.showEnvs; state.showHistory = false; render(); });
+  document.getElementById('close-history')!.addEventListener('click', () => { state.showHistory = false; render(); });
+  document.getElementById('close-env')!.addEventListener('click', () => { state.showEnvs = false; render(); });
+  document.getElementById('add-env')!.addEventListener('click', () => { data.envs.push({ key: '', value: '' }); save(data); render(); });
+
+  const bodyEditor = document.getElementById('body-editor') as HTMLTextAreaElement | null;
+  if (bodyEditor) bodyEditor.addEventListener('input', (e) => { state.body = (e.target as HTMLTextAreaElement).value; });
+
+  // Tab clicks
+  document.querySelectorAll('.tab[data-tab]').forEach(tab => {
+    tab.addEventListener('click', () => { state.activeTab = (tab as HTMLElement).dataset.tab as 'headers' | 'body' | 'ws'; render(); });
+  });
+  document.querySelectorAll('.tab[data-resp-tab]').forEach(tab => {
+    tab.addEventListener('click', () => { state.responseTab = (tab as HTMLElement).dataset.respTab as 'body' | 'headers'; render(); });
+  });
+
+  // Dynamic actions
+  document.querySelectorAll('[data-action]').forEach(el => {
+    const action = (el as HTMLElement).dataset.action!;
+    const idx = parseInt((el as HTMLElement).dataset.index || '-1');
+    const id = (el as HTMLElement).dataset.id || '';
+
+    if (action === 'toggle-header') (el as HTMLInputElement).addEventListener('change', () => { state.headers[idx].enabled = (el as HTMLInputElement).checked; });
+    if (action === 'header-key') (el as HTMLInputElement).addEventListener('input', (e) => { state.headers[idx].key = (e.target as HTMLInputElement).value; });
+    if (action === 'header-value') (el as HTMLInputElement).addEventListener('input', (e) => { state.headers[idx].value = (e.target as HTMLInputElement).value; });
+    if (action === 'remove-header') el.addEventListener('click', () => { state.headers.splice(idx, 1); render(); });
+    if (action === 'env-key') (el as HTMLInputElement).addEventListener('input', (e) => { data.envs[idx].key = (e.target as HTMLInputElement).value; save(data); });
+    if (action === 'env-value') (el as HTMLInputElement).addEventListener('input', (e) => { data.envs[idx].value = (e.target as HTMLInputElement).value; save(data); });
+    if (action === 'remove-env') el.addEventListener('click', () => { data.envs.splice(idx, 1); save(data); render(); });
+    if (action === 'toggle-fav') el.addEventListener('click', () => { const h = data.history.find(x => x.id === id); if (h) { h.favorite = !h.favorite; save(data); render(); } });
+    if (action === 'delete-history') el.addEventListener('click', () => { const i = data.history.findIndex(x => x.id === id); if (i >= 0) { data.history.splice(i, 1); save(data); render(); } });
+  });
+
+  // History item click to restore
+  document.querySelectorAll('.history-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('[data-action]')) return;
+      const id = (item as HTMLElement).dataset.id!;
+      const h = data.history.find(x => x.id === id);
+      if (h) {
+        state.method = h.method;
+        state.url = h.url;
+        state.headers = [...h.headers];
+        state.body = h.body;
+        render();
+      }
+    });
+  });
+
+  // cURL import
+  document.getElementById('curl-btn')!.addEventListener('click', () => {
+    const curl = prompt('Paste cURL command:');
+    if (curl) {
+      const parsed = parseCurl(curl);
+      state.method = parsed.method;
+      state.url = parsed.url;
+      state.headers = parsed.headers.length > 0 ? parsed.headers : state.headers;
+      state.body = parsed.body;
+      render();
+    }
+  });
+
+  // Enter key on URL
+  document.getElementById('url')!.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendRequest();
+  });
+
+  // Proxy & GraphQL toggles
+  const proxyCheckbox = document.getElementById('proxy-mode') as HTMLInputElement | null;
+  if (proxyCheckbox) {
+    proxyCheckbox.addEventListener('change', () => { state.proxyMode = proxyCheckbox.checked; });
+  }
+  const graphqlCheckbox = document.getElementById('graphql-mode') as HTMLInputElement | null;
+  if (graphqlCheckbox) {
+    graphqlCheckbox.addEventListener('change', () => { state.graphqlMode = graphqlCheckbox.checked; });
+  }
+
+  // WebSocket controls
+  const wsUrlInput = document.getElementById('ws-url') as HTMLInputElement | null;
+  const wsConnectBtn = document.getElementById('ws-connect-btn') as HTMLButtonElement | null;
+  const wsSendText = document.getElementById('ws-send-text') as HTMLTextAreaElement | null;
+  const wsSendBtn = document.getElementById('ws-send-btn') as HTMLButtonElement | null;
+
+  if (wsUrlInput) {
+    wsUrlInput.addEventListener('input', (e) => { wsState.url = (e.target as HTMLInputElement).value; });
+  }
+  if (wsConnectBtn) {
+    wsConnectBtn.addEventListener('click', () => {
+      if (wsState.connected) {
+        wsState.ws?.close();
+        wsState.connected = false;
+        wsState.ws = null;
+        render();
+        return;
+      }
+      const url = wsState.url.trim();
+      if (!url) { alert('Enter a WebSocket URL'); return; }
+      try {
+        const ws = new WebSocket(url);
+        wsState.log = [`Connecting to ${url}...`];
+        ws.onopen = () => {
+          wsState.connected = true;
+          wsState.log.push('✅ Connected');
+          render();
+        };
+        ws.onmessage = (event) => {
+          wsState.log.push(`⬅ ${event.data}`);
+          render();
+        };
+        ws.onerror = () => {
+          wsState.log.push('❌ Error (see console)');
+          render();
+        };
+        ws.onclose = () => {
+          if (wsState.connected) {
+            wsState.connected = false;
+            wsState.ws = null;
+            wsState.log.push('🔌 Disconnected');
+            render();
+          }
+        };
+        wsState.ws = ws;
+      } catch (e) {
+        wsState.log.push(`❌ Failed: ${(e as Error).message}`);
+        render();
+      }
+    });
+  }
+  if (wsSendBtn) {
+    wsSendBtn.addEventListener('click', () => {
+      if (wsState.connected && wsState.ws && wsState.sendText) {
+        wsState.ws.send(wsState.sendText);
+        wsState.log.push(`➡ ${wsState.sendText}`);
+        render();
+      }
+    });
+  }
+  if (wsSendText) {
+    wsSendText.addEventListener('input', (e) => { wsState.sendText = (e.target as HTMLTextAreaElement).value; });
+  }
+}
+
+async function sendRequest(): Promise<void> {
+  if (!state.url || state.loading) return;
+  state.loading = true;
+  state.error = '';
+  state.response = null;
+  render();
+
+  let targetUrl = replaceEnvVars(state.url, data.envs);
+  const baseHeaders: Record<string, string> = {};
+  state.headers.filter(h => h.enabled && h.key).forEach(h => {
+    baseHeaders[replaceEnvVars(h.key, data.envs)] = replaceEnvVars(h.value, data.envs);
+  });
+  let body = ['GET', 'HEAD'].includes(state.method) ? undefined : replaceEnvVars(state.body, data.envs);
+
+  // Handle Proxy mode
+  if (state.proxyMode) {
+    const proxyPayload = {
+      url: targetUrl,
+      method: state.method,
+      headers: baseHeaders,
+      body: body
+    };
+    targetUrl = '/api/tester/proxy';
+    body = JSON.stringify(proxyPayload);
+    baseHeaders['Content-Type'] = 'application/json';
+  } else if (state.graphqlMode) {
+    baseHeaders['Content-Type'] = 'application/graphql';
+    // body remains raw
+  }
+
+  const start = performance.now();
+  try {
+    const res = await fetch(targetUrl, { method: state.method, headers: baseHeaders, body: body });
+    const time = Math.round(performance.now() - start);
+    const text = await res.text();
+    const resHeaders: Record<string, string> = {};
+    res.headers.forEach((v, k) => { resHeaders[k] = v; });
+
+    let formatted = text;
+    try { formatted = JSON.stringify(JSON.parse(text), null, 2); } catch {}
+
+    state.response = { status: res.status, statusText: res.statusText, headers: resHeaders, body: formatted, time, size: new Blob([text]).size };
+
+    // Save history
+    const item: HistoryItem = {
+      id: Date.now().toString(36) + Math.random().toString(36).substr(2, 4),
+      method: state.method, url: state.url, headers: [...state.headers], body: state.body,
+      status: res.status, statusText: res.statusText, time, responseSize: state.response.size,
+      timestamp: Date.now(), favorite: false
+    };
+    data.history.push(item);
+    if (data.history.length > 100) data.history = data.history.slice(-100);
+    save(data);
+  } catch (err) {
+    state.error = `Request failed: ${(err as Error).message}. Note: CORS may block cross-origin requests from the browser.`;
+  }
+  state.loading = false;
+  render();
+}
+
+render();
