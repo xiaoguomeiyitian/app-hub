@@ -9,7 +9,7 @@
  */
 
 import { spawnSync } from 'child_process';
-import { existsSync, readdirSync, readFileSync, rmSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync, rmSync, mkdirSync, cpSync } from 'fs';
 import { join, basename, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -81,7 +81,73 @@ console.log(`  app-hub 构建${sampleCount ? ` (抽样 ${sampleCount} 个)` : ' 
 console.log('========================================');
 console.log();
 
-// 1. 安装核心依赖
+// 1. 安装根目录依赖
+log('安装根目录依赖...');
+if (existsSync(join(ROOT, 'package.json'))) {
+  process.stdout.write('  安装根目录...'.padEnd(30));
+  if (exec('npm install --ignore-scripts', ROOT, true)) {
+    ok('完成');
+  } else {
+    err('根目录依赖安装失败');
+    process.exit(1);
+  }
+}
+console.log();
+
+// 1.5 修复 package-lock.json workspace link 版本缺失（npm 11.x bug）
+log('修复 package-lock.json workspace link 版本...');
+{
+  const lockPath = join(ROOT, 'package-lock.json');
+  if (existsSync(lockPath)) {
+    let lock;
+    try { lock = JSON.parse(readFileSync(lockPath, 'utf-8')); } catch { lock = null; }
+    if (lock && lock.packages) {
+      let fixed = 0;
+      for (const [key, val] of Object.entries(lock.packages)) {
+        if (val.version) continue;
+        if (val.resolved) {
+          try {
+            const pkgJson = JSON.parse(readFileSync(join(ROOT, val.resolved, 'package.json'), 'utf-8'));
+            val.version = pkgJson.version;
+            fixed++;
+            continue;
+          } catch { /* fall through */ }
+        }
+        const match = key.match(/node_modules\/(@[^/]+\/[^/]+|[^/]+)\/?$/);
+        if (match) {
+          const pkgName = match[1];
+          const searchPaths = [
+            `packages/${pkgName.replace('@app-hub/', '')}`,
+            'hub-server',
+            'lobby-web',
+          ];
+          let found = false;
+          for (const sp of searchPaths) {
+            try {
+              const pkg = JSON.parse(readFileSync(join(ROOT, sp, 'package.json'), 'utf-8'));
+              if (pkg.name === pkgName) { val.version = pkg.version; val.resolved = sp; found = true; fixed++; break; }
+            } catch { /* continue */ }
+          }
+          if (!found) { val.version = '1.0.0'; fixed++; }
+        } else if (key === '') {
+          val.version = lock.version || '0.0.1';
+          fixed++;
+        }
+      }
+      if (fixed > 0) {
+        writeFileSync(lockPath, JSON.stringify(lock, null, 2));
+        ok(`修复完成: ${fixed} 个条目已补全版本号`);
+      } else {
+        ok('无需修复');
+      }
+    }
+  } else {
+    warn('package-lock.json 不存在，跳过修复');
+  }
+}
+console.log();
+
+// 2. 安装核心依赖
 log('安装核心依赖...');
 const coreDirs = ['hub-server', 'lobby-web'];
 for (const name of readdirSync(join(ROOT, 'packages'))) {
@@ -102,7 +168,16 @@ for (const dir of coreDirs) {
 
 console.log();
 
-// 2. 获取项目列表
+// 2.5 编译 better-sqlite3 原生模块
+log('编译 better-sqlite3 原生模块...');
+if (exec('npm rebuild better-sqlite3', ROOT, true)) {
+  ok('better-sqlite3 编译完成');
+} else {
+  warn('better-sqlite3 编译失败，部分功能可能不可用');
+}
+console.log();
+
+// 3. 获取项目列表
 let projects = getProjects();
 if (sampleCount !== null && sampleCount < projects.length) {
   // Fisher-Yates 洗牌后取前 N 个
@@ -163,6 +238,28 @@ for (const proj of projects) {
     err('构建失败');
     failed.push(proj.name);
   }
+}
+
+// ---------- 同步到 static/ ----------
+console.log();
+log('同步构建产物到 static/...');
+{
+  const STATIC_ROOT = join(ROOT, 'static');
+  if (!existsSync(STATIC_ROOT)) mkdirSync(STATIC_ROOT, { recursive: true });
+  let copied = 0;
+  for (const proj of projects) {
+    const distDir = join(proj.dir, 'dist');
+    if (!existsSync(distDir)) continue;
+    const targetDir = join(STATIC_ROOT, proj.name);
+    try {
+      if (existsSync(targetDir)) rmSync(targetDir, { recursive: true, force: true });
+      cpSync(distDir, targetDir, { recursive: true });
+      copied++;
+    } catch (e) {
+      warn(`同步失败: ${proj.name} - ${e.message}`);
+    }
+  }
+  ok(`同步完成: ${copied} 个应用已复制到 static/`);
 }
 
 // ---------- 汇总 ----------

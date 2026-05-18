@@ -7,7 +7,7 @@
  */
 
 import { spawnSync, execSync } from 'child_process';
-import { existsSync, readdirSync, readFileSync, rmSync, mkdirSync, statSync } from 'fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync, rmSync, mkdirSync, statSync } from 'fs';
 import { join, basename, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -234,6 +234,62 @@ if (existsSync(packagesDir)) {
 }
 
 // ============================================================
+// Step 2.5: 修复 package-lock.json workspace link 版本缺失
+// ============================================================
+// npm 11.x 的 bug：workspace link 条目缺少 version 字段，
+// 会导致子项目 npm install 时 semver 解析崩溃。
+log('Step 2.5: 修复 package-lock.json workspace link 版本...');
+{
+  const lockPath = join(ROOT, 'package-lock.json');
+  if (existsSync(lockPath)) {
+    let lock;
+    try { lock = JSON.parse(readFileSync(lockPath, 'utf-8')); } catch { lock = null; }
+    if (lock && lock.packages) {
+      let fixed = 0;
+      for (const [key, val] of Object.entries(lock.packages)) {
+        if (val.version) continue;
+        if (val.resolved) {
+          try {
+            const pkgJson = JSON.parse(readFileSync(join(ROOT, val.resolved, 'package.json'), 'utf-8'));
+            val.version = pkgJson.version;
+            fixed++;
+            continue;
+          } catch { /* fall through */ }
+        }
+        const match = key.match(/node_modules\/(@[^/]+\/[^/]+|[^/]+)\/?$/);
+        if (match) {
+          const pkgName = match[1];
+          const searchPaths = [
+            `packages/${pkgName.replace('@app-hub/', '')}`,
+            'hub-server',
+            'lobby-web',
+          ];
+          let found = false;
+          for (const sp of searchPaths) {
+            try {
+              const pkg = JSON.parse(readFileSync(join(ROOT, sp, 'package.json'), 'utf-8'));
+              if (pkg.name === pkgName) { val.version = pkg.version; val.resolved = sp; found = true; fixed++; break; }
+            } catch { /* continue */ }
+          }
+          if (!found) { val.version = '1.0.0'; fixed++; }
+        } else if (key === '') {
+          val.version = lock.version || '0.0.1';
+          fixed++;
+        }
+      }
+      if (fixed > 0) {
+        writeFileSync(lockPath, JSON.stringify(lock, null, 2));
+        ok(`修复完成: ${fixed} 个条目已补全版本号`);
+      } else {
+        ok('无需修复');
+      }
+    }
+  } else {
+    warn('package-lock.json 不存在，跳过修复');
+  }
+}
+
+// ============================================================
 // Step 3: 安装子项目依赖
 // ============================================================
 if (!ONLY_CORE) {
@@ -328,6 +384,14 @@ log('Step 5: 启动服务...');
 
 // 确保数据目录存在
 mkdirSync(join(ROOT, 'data'), { recursive: true });
+
+// 重新编译 better-sqlite3 原生模块（npm install --ignore-scripts 会跳过编译）
+log('编译 better-sqlite3 原生模块...');
+if (exec('npm rebuild better-sqlite3', ROOT, true)) {
+  ok('better-sqlite3 编译完成');
+} else {
+  warn('better-sqlite3 编译失败，服务器可能无法启动');
+}
 
 log('启动 hub-server...');
 log('访问地址: https://97.383636.xyz/code/20008/');
