@@ -1,6 +1,6 @@
-// import '@app-hub/design-system/src/style.css';
+import '@app-hub/design-system/src/style.css';
 /// <reference types="vite/client" />
-// import '@app-hub/utils/theme/variables.css';
+import '@app-hub/utils/theme/variables.css';
 import './style.css';
 
 const APP_NAME = 'JSON Tool';

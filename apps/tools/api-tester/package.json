@@ -18,9 +18,6 @@
                             "vitest":  "^4.1.5"
                         },
     "dependencies":  {
-                         "@app-hub/utils":  "*"
-                     },
-    "peerDependencies":  {
-                             "@app-hub/utils":  "*"
-                         }
+                         "@app-hub/utils":  "file:../../../packages/app-utils"
+                     }
 }
