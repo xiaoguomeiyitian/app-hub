@@ -78,9 +78,34 @@ function getThemeColors() {
   };
 }
 
-function initSigCanvas() {
+function initSigCanvas(): void {
+  sigCanvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
+  if (!sigCanvas) return;
+  sigCtx = sigCanvas.getContext('2d')!;
+  sigCtx.strokeStyle = '#000';
+  sigCtx.lineWidth = 2;
+  sigCtx.lineCap = 'round';
 
-[148 more lines in file. Use offset=31 to continue.]
+  sigCanvas.addEventListener('mousedown', (e) => {
+    sigDrawing = true;
+    sigEmpty = false;
+    const rect = sigCanvas.getBoundingClientRect();
+    sigPoints.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    sigCtx.beginPath();
+    sigCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  });
+
+  sigCanvas.addEventListener('mousemove', (e) => {
+    if (!sigDrawing) return;
+    const rect = sigCanvas.getBoundingClientRect();
+    sigPoints.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    sigCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    sigCtx.stroke();
+  });
+
+  sigCanvas.addEventListener('mouseup', () => { sigDrawing = false; });
+  sigCanvas.addEventListener('mouseleave', () => { sigDrawing = false; });
+}
 
 function render(): void {
   applyTheme();

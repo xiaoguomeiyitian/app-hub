@@ -110,7 +110,12 @@ for (let i = 0; i < projects.length; i++) {
       const targetDir = join(STATIC_ROOT, proj.name);
       try {
         if (existsSync(targetDir)) rmSync(targetDir, { recursive: true, force: true });
-        cpSync(distDir, targetDir, { recursive: true });
+        mkdirSync(targetDir, { recursive: true });
+        // 复制 dist/ 目录下的内容到 static/<app>/，而非 dist 目录本身
+        const entries = readdirSync(distDir, { withFileTypes: true });
+        for (const entry of entries) {
+          cpSync(join(distDir, entry.name), join(targetDir, entry.name), { recursive: true });
+        }
         built++;
         ok(`构建成功 → static/${proj.name}/`);
       } catch (e) {

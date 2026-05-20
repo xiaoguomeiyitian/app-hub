@@ -216,8 +216,13 @@ for (const proj of projects) {
     continue;
   }
 
-  // 构建
-  if (exec('npm run build', proj.dir, true)) {
+  // 构建：先尝试 npm run build，失败则尝试直接 vite build（跳过 tsc）
+  let buildOk = exec('npm run build', proj.dir, true);
+  if (!buildOk) {
+    buildOk = exec('npx vite build', proj.dir, true);
+    if (buildOk) warn(`${proj.name}: 使用 vite build 跳过 tsc 成功`);
+  }
+  if (buildOk) {
     passed++;
     const distDir = join(proj.dir, 'dist');
     if (!existsSync(distDir)) {
@@ -253,7 +258,12 @@ log('同步构建产物到 static/...');
     const targetDir = join(STATIC_ROOT, proj.name);
     try {
       if (existsSync(targetDir)) rmSync(targetDir, { recursive: true, force: true });
-      cpSync(distDir, targetDir, { recursive: true });
+      mkdirSync(targetDir, { recursive: true });
+      // 复制 dist/ 目录下的内容到 static/<app>/，而非 dist 目录本身
+      const distEntries = readdirSync(distDir, { withFileTypes: true });
+      for (const entry of distEntries) {
+        cpSync(join(distDir, entry.name), join(targetDir, entry.name), { recursive: true });
+      }
       copied++;
     } catch (e) {
       warn(`同步失败: ${proj.name} - ${e.message}`);

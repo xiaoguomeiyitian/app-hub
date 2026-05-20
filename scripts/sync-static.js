@@ -55,11 +55,15 @@ for (const cat of categories) {
     }
 
     try {
-      // 删除旧目录，重新复制
+      // 删除旧目录，重新复制 dist/ 内容到 static/<app>/
       if (existsSync(targetDir)) {
         rmSync(targetDir, { recursive: true, force: true });
       }
-      cpSync(distDir, targetDir, { recursive: true });
+      mkdirSync(targetDir, { recursive: true });
+      const entries = readdirSync(distDir, { withFileTypes: true });
+      for (const entry of entries) {
+        cpSync(join(distDir, entry.name), join(targetDir, entry.name), { recursive: true });
+      }
       copied++;
       ok(`${appName}  (${cat.name})`);
     } catch (e) {
